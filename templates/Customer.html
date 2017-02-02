@@ -12,21 +12,25 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
 	<!-- local -->
-	<link rel="stylesheet" href="static/css/main.css">
-	<script src="static/js/main.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="../static/css/main.css">
+	<script src="../static/js/main.js" type="text/javascript" charset="utf-8"></script>
 
     <style>
-        .container{
-            font-family:"Comic Sans MS", cursive, sans-serif;
-        }
         .title-container{
             font-size: 1em;
         }
+        .history{
+            text-align: center;
+            font-size: 1.3em;
+        }
         th{
             font-size: 1.1em;
+            text-align: center;
+            width:50%;
         }
         tr{
             font-size:1.2em;
+            text-align: center;
         }
         .name-container{
             font-size: 2.2em;
@@ -38,10 +42,45 @@
             border-color:lightgrey;
         }
         .back-home{
-            font-family:"Comic Sans MS", cursive, sans-serif;
             font-size: 2.2em;
             text-align:right;
             padding-top: 0;
+        }
+        .order-list-container {
+	        width: 95%;
+	        margin: auto;
+	        font-size: 0.8em;
+        }
+        .every-order-list-container {
+	        vertical-align: top;
+	        width: 30%;
+	        display: inline-block;
+	        background-color: white;
+	        height: 135px;
+	        border: 2px solid black;
+	        margin-top: 20px;
+	        margin-left: 2%;
+	        border-radius: 6px;
+        }
+        .every-order-list-container .panel-header {
+	        background-color: #66B2FF;
+	        padding: 0 0 0 0;
+	        font-size: 1.2em;
+	        text-align:center;
+	        height: 45px;
+	        line-height: 45px;
+        }
+        .panel-body {
+            padding: 10px;
+        }
+        .every-order-list-container .panel-header h1 {
+	        margin-top: 0;
+	        color: white;
+        }
+        .every-order-list-container .panel-body > div {
+	        margin-top: 1.2%;
+	        font-size: 1.2em;
+	        text-align:center;
         }
     </style>
 </head>
@@ -64,15 +103,34 @@
                     <td>wilkin</td>
                 </tr>
                 <tr>
+                    <th>Favorites</th>
+                    <td>Dr.Pepper</td>
+                </tr>
+                <tr>
                     <th>Card No</th>
                     <td>data</td>
                 </tr>
                 <tr>
-                    <th>Favorites</th>
-                    <td>Dr.Pepper</td>
+                    <th>Current Balance</th>
+                    <td>$100</td>
                 </tr>
             </table>
     </div>
+    <hr></hr>
+    <div class="order-list-container">
+            <a href="Order.html">
+                <div class="every-order-list-container">
+                    <div class="panel-header">
+                        <h1 class="date">2017.1.28</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-number" id="display-table">Table No: 5</div>
+                        <div class="guest-number" id="display-guest">Guest No: 21</div>
+                        <div class="check">Total: $22.75</div>
+                    </div>
+                </div>
+            </a>
+        </div>
     <div class="back-home">
         <a href="Welcome.html">Main Page</a>
     </div>
