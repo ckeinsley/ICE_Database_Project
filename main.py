@@ -13,11 +13,11 @@ app = Flask(__name__)
 def hello_world():
     return render_template('Welcome.html')
 
-@app.route('/Menu')
+@app.route('/Menu.html')
 def menu_page():
     return render_template('Menu.html')
 
-@app.route('/OrderList')
+@app.route('/OrderList.html')
 def order_page():
     return 'Hello World!'
 # @app.route('/movie/<int:movie_id>', method=['GET'])
