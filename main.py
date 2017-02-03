@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, render_template
 import pypyodbc
 
 app = Flask(__name__)
@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'welcome.html'
+    return render_template('welcome.html')
 
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
