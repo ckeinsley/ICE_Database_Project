@@ -24,4 +24,4 @@ def hello_world():
     # results = cursor.fetchone()
     # flask.json.jsonify(results)
 if __name__ =="__main__":
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='137.112.104.124', port=8080, debug=True)
