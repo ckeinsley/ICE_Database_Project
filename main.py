@@ -16,12 +16,12 @@ def hello_world():
 # Might want to change the extensions to remove the .html tags
 
 
-@APP.route('/Menu.html')
+@APP.route('/Menu')
 def menu_page():
     return render_template('Menu.html')
 
 
-@APP.route('/OrderList.html')
+@APP.route('/OrderList')
 def order_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price FROM Recipe")
