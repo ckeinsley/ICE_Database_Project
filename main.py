@@ -6,7 +6,7 @@ APP = Flask(__name__)
 CONNECTION = pypyodbc.connect('Driver={SQL Server};'
                               'Server=titan.csse.rose-hulman.edu;'
                               'Database=ICE_Project;'
-                              'uid=guest;pwd=')
+                              'uid=guest;pwd=guest')
 
 
 @APP.route('/')
