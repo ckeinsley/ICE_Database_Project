@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return render_template('welcome.html')
+    return render_template('Welcome.html')
 
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
