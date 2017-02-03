@@ -13,7 +13,13 @@ app = Flask(__name__)
 def hello_world():
     return render_template('Welcome.html')
 
+@app.route('/Menu')
+def menu_page():
+    return render_template('Menu.html')
 
+@app.route('/OrderList')
+def order_page():
+    return 'Hello World!'
 # @app.route('/movie/<int:movie_id>', method=['GET'])
 # def get_movie(movie_id):
     # cursor = connection.cursor()
