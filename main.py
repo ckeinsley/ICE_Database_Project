@@ -1,4 +1,4 @@
-import flask
+from flask import Flask
 # import pypyodbc
 
 app = Flask(__name__)
