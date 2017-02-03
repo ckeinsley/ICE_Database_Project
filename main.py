@@ -24,8 +24,8 @@ def menu_page():
 @app.route('/OrderList.html')
 def order_page():
     cursor = connection.cursor()
-    SQLCommand = ("SELECT RecipeName, Price FROM Recipe")
-    cursor.execute(SQLCommand)
+    squery = ("SELECT RecipeName, Price FROM Recipe")
+    cursor.execute(squery)
     results = cursor.fetchone()
     return jsonify(results)
 
