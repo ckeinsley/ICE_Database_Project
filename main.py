@@ -3,9 +3,9 @@ import pypyodbc
 
 APP = Flask(__name__)
 
-CONNECTION = pypyodbc.connect('Driver={SQL Server};'
-                              'Server=titan.csse.rose-hulman.edu;'
-                              'Database=ICE_Project;')
+# CONNECTION = pypyodbc.connect('Driver={SQL Server};'
+#                               'Server=titan.csse.rose-hulman.edu;'
+#                               'Database=ICE_Project;')
 
 
 @APP.route('/')
@@ -22,11 +22,12 @@ def menu_page():
 
 @APP.route('/OrderList')
 def order_page():
-    cursor = CONNECTION.cursor()
-    squery = ("SELECT RecipeName, Price FROM Recipe")
-    cursor.execute(squery)
-    results = cursor.fetchone()
-    return jsonify(results)
+    # cursor = CONNECTION.cursor()
+    # squery = ("SELECT RecipeName, Price FROM Recipe")
+    # cursor.execute(squery)
+    # results = cursor.fetchone()
+    # return jsonify(results)
+    return render_template("OrderList.html")
 
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
