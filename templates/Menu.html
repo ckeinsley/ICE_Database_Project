@@ -26,7 +26,7 @@
         .title-container{
             text-align:center;
         }
-        .menu-container {
+        .menu-container edit-actions{
 	        width: 95%;
 	        margin: auto;
 	        font-size: 0.8em;
@@ -43,7 +43,7 @@
 	        border-radius: 6px;
         }
         .every-recipe-container .panel-header {
-	        background-color: #66B2FF;
+	        background-color: #337AB7;
 	        padding: 0 0 0 0;
 	        font-size: 1.2em;
 	        text-align:center;
@@ -51,7 +51,9 @@
 	        line-height: 45px;
         }
         .panel-body {
-            padding: 10px;
+            margin-top: 1.9%;
+	        font-size: 1.3em;
+	        text-align:center;
         }
         .every-recipe-container .panel-header h1 {
 	        margin-top: 0;
@@ -78,19 +80,30 @@
         </div>
         
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right 1">
                         <a id="add-recipe" data-toggle="modal"
                         data-target="#insert-recipe-modal" href="#">Add Recipe</a>
                 </ul>
+                    <ul class="nav navbar-nav navbar-right 2">
+                        <a id="toggle-edit" href="#">Edit</a>
+                    </ul>
             </div>
-
-        <div class="menu-container">
-            <a href="Recipe.html">
+        <div class="menu-container edit-actions">
                 <div class="every-recipe-container">
                     <div class="panel-header">
-                        <h1 class="name" id="display-name">Pizza</h1>
+                        <h1 class="name" id="display-name">Pizza
+                            <button data-toggle="modal" data-target="#insert-recipe-modal"
+						type="button" class="edit-recipe btn btn-success">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button data-toggle="modal" data-target="#delete-recipe-modal"
+				        type="button" class="delete-recipe btn btn-danger">
+						<span class="glyphicon glyphicon-remove"></span>
+				    </button>
+                        </h1>
                     </div>
                     <div class="panel-body">
+                        <a href="Recipe.html">
                         <div class="price" id="display-price">Price: $13.00</div>
                         <div class="calorie" id="display-calorie">Calorie: 200</div>
                     </div>
