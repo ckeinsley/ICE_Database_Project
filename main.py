@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return app.send_static_file('welcome.html')
 
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
