@@ -3,7 +3,8 @@ import pypyodbc
 
 APP = Flask(__name__)
 
-CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulman.edu; Database=ICE_Project; ')
+CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulman.edu;'
+                              'Database=ICE_Project; Uid=keinslc; Pwd=Vallion11')
 
 
 @APP.route('/')
@@ -18,9 +19,10 @@ def hello_world():
 def menu_page():
     return render_template('Menu.html')
 
+#-----ORDERS------#
 
 @APP.route('/OrderList')
-def order_page():
+def orderList_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT * FROM Recipe")
     cursor.execute(squery)
@@ -28,17 +30,30 @@ def order_page():
     return jsonify(results)
     # return render_template("OrderList.html")
 
+@APP.route('/Order')
+def order_page():
+    return render_template('Order.html')
+
+#-----CUSTOMERS----------#
 @APP.route('/CustomerList')
-def customer_page():
+def customerList_page():
     return render_template("CustomerList.html")
 
+@APP.route('/Customer')
+def customer_page():
+    return render_template('Customer.html')
+
+#-------INGREDIENTS----------#
 @APP.route('/IngredientList')
-def Ingredient_page():
+def ingredientList_page():
     return render_template('IngredientList.html')
 
 @APP.route('/Ingredient')
-def Ingredient_page():
+def ingredient_page():
     return render_template('Ingredient.html')
+
+
+
 
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
