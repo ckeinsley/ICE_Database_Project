@@ -21,12 +21,19 @@ def menu_page():
 @APP.route('/OrderList')
 def order_page():
     cursor = CONNECTION.cursor()
-    squery = ("SELECT RecipeName, Price FROM Recipe")
+    squery = ("SELECT * FROM Recipe")
     cursor.execute(squery)
     results = cursor.fetchone()
     return jsonify(results)
     # return render_template("OrderList.html")
 
+@APP.route('/Customer')
+def customer_page():
+    return render_template("CustomerList.html")
+
+@APP.route('/Ingredient')
+def Ingredient_page():
+    return render_template('IngredientList.html')
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
 # def get_movie(movie_id):
