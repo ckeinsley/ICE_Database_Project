@@ -27,11 +27,11 @@ def order_page():
     return jsonify(results)
     # return render_template("OrderList.html")
 
-@APP.route('/Customer')
+@APP.route('/CustomerList')
 def customer_page():
     return render_template("CustomerList.html")
 
-@APP.route('/Ingredient')
+@APP.route('/IngredientList')
 def Ingredient_page():
     return render_template('IngredientList.html')
 
