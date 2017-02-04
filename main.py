@@ -7,6 +7,7 @@ CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulma
 
 
 @APP.route('/')
+@APP.route('Welcome.html')
 def hello_world():
     return render_template('Welcome.html')
 
