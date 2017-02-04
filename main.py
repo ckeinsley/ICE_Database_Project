@@ -12,9 +12,6 @@ CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulma
 def hello_world():
     return render_template('Welcome.html')
 
-# Might want to change the extensions to remove the .html tags
-
-
 @APP.route('/Menu')
 def menu_page():
     return render_template('Menu.html')
@@ -27,6 +24,7 @@ def orderList_page():
     squery = ("SELECT * FROM Recipe")
     cursor.execute(squery)
     results = cursor.fetchone()
+    print(results)
     return jsonify(results)
     # return render_template("OrderList.html")
 
