@@ -3,7 +3,7 @@ import pypyodbc
 
 APP = Flask(__name__)
 
-CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulman.edu; Database=ICE_Project; Uid=keinslc; Pwd=Vallion11')
+CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulman.edu; Database=ICE_Project; ')
 
 
 @APP.route('/')
@@ -35,6 +35,11 @@ def customer_page():
 @APP.route('/IngredientList')
 def Ingredient_page():
     return render_template('IngredientList.html')
+
+@APP.route('/Ingredient')
+def Ingredient_page():
+    return render_template('Ingredient.html')
+
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
 # def get_movie(movie_id):
