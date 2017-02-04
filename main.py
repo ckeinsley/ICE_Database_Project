@@ -20,13 +20,13 @@ def menu_page():
 
 @APP.route('/OrderList')
 def orderList_page():
-    cursor = CONNECTION.cursor()
-    squery = ("SELECT * FROM Recipe")
-    cursor.execute(squery)
-    results = cursor.fetchone()
-    print(results)
-    return jsonify(results)
-    # return render_template("OrderList.html")
+    # cursor = CONNECTION.cursor()
+    # squery = ("SELECT * FROM Recipe")
+    # cursor.execute(squery)
+    # results = cursor.fetchone()
+    # print(results)
+    # return jsonify(results)
+    return render_template("OrderList.html")
 
 @APP.route('/Order')
 def order_page():
