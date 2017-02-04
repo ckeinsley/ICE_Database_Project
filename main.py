@@ -20,12 +20,12 @@ def menu_page():
 
 @APP.route('/OrderList')
 def order_page():
-    # cursor = CONNECTION.cursor()
-    # squery = ("SELECT RecipeName, Price FROM Recipe")
-    # cursor.execute(squery)
-    # results = cursor.fetchone()
-    # return jsonify(results)
-    return render_template("OrderList.html")
+    cursor = CONNECTION.cursor()
+    squery = ("SELECT RecipeName, Price FROM Recipe")
+    cursor.execute(squery)
+    results = cursor.fetchone()
+    return jsonify(results)
+    # return render_template("OrderList.html")
 
 
 # @app.route('/movie/<int:movie_id>', method=['GET'])
