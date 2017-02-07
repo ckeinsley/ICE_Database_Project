@@ -4,7 +4,7 @@ import pypyodbc
 APP = Flask(__name__)
 
 CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulman.edu;'
-                              'Database=ICE_Project; Uid=keinslc; Pwd=Vallion11')
+                              'Database=ICE_Project; Uid=introvertGuest; Pwd=introvertPassword')
 
 
 @APP.route('/')
@@ -50,18 +50,5 @@ def ingredientList_page():
 def ingredient_page():
     return render_template('Ingredient.html')
 
-
-
-
-
-# @app.route('/movie/<int:movie_id>', method=['GET'])
-# def get_movie(movie_id):
-    # cursor = connection.cursor()
-    # SQLCommand = ("SELECT Title, Year, Rated from Movies"
-    #   "WHERE Id=?")
-    # Values = [movie_id]
-    # cursor.execute(SQLCommand, Values)
-    # results = cursor.fetchone()
-    # flask.json.jsonify(results)
 if __name__ == "__main__":
     APP.run(host='0.0.0.0', port=8080, debug=True)
