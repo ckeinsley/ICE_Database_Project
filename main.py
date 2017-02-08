@@ -38,8 +38,7 @@ def customer_page():
     cursor.execute(squery)
     results = cursor.fetchone()
     mystring = ''.join(map(str, results))
-    return mystring
-    # return render_template('Customer.html', customer=results)
+    return render_template('Customer.html', customer=mystring)
 
 #-------INGREDIENTS----------#
 @APP.route('/IngredientList')
