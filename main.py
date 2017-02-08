@@ -37,7 +37,9 @@ def customer_page():
     squery = ("SELECT Username FROM Account")
     cursor.execute(squery)
     results = cursor.fetchone()
-    return render_template('Customer.html', customer=results)
+    mystring = ''.join(map(str, results))
+    return mystring
+    # return render_template('Customer.html', customer=results)
 
 #-------INGREDIENTS----------#
 @APP.route('/IngredientList')
