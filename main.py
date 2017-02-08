@@ -34,7 +34,7 @@ def customerList_page():
 @APP.route('/Customer')
 def customer_page():
     cursor = CONNECTION.cursor()
-    squery = ("SELECT name FROM Customer")
+    squery = ("SELECT Username FROM Account")
     cursor.execute(squery)
     results = cursor.fetchone()
     print(results)
