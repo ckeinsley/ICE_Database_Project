@@ -3,7 +3,6 @@ import pypyodbc
 
 APP = Flask(__name__)
 
-#TODO fix password in SQL SERVER
 CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulman.edu;'
                               'Database=ICE_Project; Uid=introvertGuest; Pwd=introvertPassword')
 
@@ -37,8 +36,11 @@ def customer_page():
     squery = ("SELECT Username FROM Account")
     cursor.execute(squery)
     results = cursor.fetchone()
+    #('dante', )
     mystring = ''.join(map(str, results))
-    return render_template('Customer.html', customer=mystring)
+    #dante
+    return mystring
+    # return render_template('Customer.html', customer=mystring)
 
 #-------INGREDIENTS----------#
 @APP.route('/IngredientList')
