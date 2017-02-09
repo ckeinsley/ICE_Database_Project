@@ -35,7 +35,7 @@ def customer_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT Username FROM Account")
     cursor.execute(squery)
-    results = cursor.fetchone()
+    results = cursor.fetchall()
     #('dante', )
     mystring = ''.join(map(str, results))
     #dante
