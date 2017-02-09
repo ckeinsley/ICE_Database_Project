@@ -39,8 +39,7 @@ def customer_page():
     #('dante', )
     mystring = ''.join(map(str, results))
     #dante
-    return mystring
-    # return render_template('Customer.html', customer=mystring)
+    return render_template('Customer.html', customer=mystring)
 
 #-------INGREDIENTS----------#
 @APP.route('/IngredientList')
