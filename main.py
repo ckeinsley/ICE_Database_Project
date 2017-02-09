@@ -28,7 +28,14 @@ def order_page():
 #-----CUSTOMERS----------#
 @APP.route('/CustomerList')
 def customerList_page():
-    return render_template("CustomerList.html")
+    cursor = CONNECTION.cursor()
+    squery = ("SELECT Username FROM Account")
+    cursor.execute(squery)
+    results = cursor.fetchall()
+    #('dante', )
+    mystring = ''.join(map(str, results))
+    #dante
+    return render_template("CustomerList.html", customer=mystring)
 
 @APP.route('/Customer')
 def customer_page():
