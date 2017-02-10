@@ -12,20 +12,26 @@ CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulma
 def hello_world():
     return render_template('Welcome.html')
 
+
 @APP.route('/Menu')
 def menu_page():
     return render_template('Menu.html')
 
 #-----ORDERS------#
+
+
 @APP.route('/OrderList')
 def orderList_page():
     return render_template("OrderList.html")
+
 
 @APP.route('/Order')
 def order_page():
     return render_template('Order.html')
 
 #-----CUSTOMERS----------#
+
+
 @APP.route('/CustomerList')
 def customerList_page():
     cursor = CONNECTION.cursor()
@@ -33,10 +39,15 @@ def customerList_page():
     cursor.execute(squery)
     results = cursor.fetchall()
     #('dante', )
-    mystring = jsonify(results)
-    print(mystring)
-    #dante
-    return render_template("CustomerList.html", customer=mystring)
+    rows = []
+    for row in results:
+        rows.append(row)
+
+    # mystring = jsonify(results)
+    # print(mystring)
+    # dante
+    return render_template("CustomerList.html", customer=rows)
+
 
 @APP.route('/Customer')
 def customer_page():
@@ -48,13 +59,16 @@ def customer_page():
     mystring = jsonify(results)
     print(mystring)
     # mystring = ''.join(map(str, results))
-    #dante
+    # dante
     return render_template('Customer.html', customer=mystring)
 
 #-------INGREDIENTS----------#
+
+
 @APP.route('/IngredientList')
 def ingredientList_page():
     return render_template('IngredientList.html')
+
 
 @APP.route('/Ingredient')
 def ingredient_page():
