@@ -54,11 +54,8 @@ def customer_page():
     squery = ("SELECT* FROM Account WHERE Username="+ "'"+username+"'")
     cursor.execute(squery)
     results = cursor.fetchall()
-    rows = []
-    for row in results:
-        rows.append(row)
 
-    return render_template('Customer.html',customer=rows)
+    return render_template('Customer.html',customer=results[0])
 
 #-------INGREDIENTS----------#
 
