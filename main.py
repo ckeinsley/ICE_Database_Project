@@ -26,6 +26,15 @@ def menu_page():
         rows.append(row)
     return render_template("Menu.html", menu=rows)
 
+@APP.route('/Recipe')
+def customer_page():
+    recipename=request.args.get('name')
+    cursor = CONNECTION.cursor()
+    squery1 = ("SELECT* FROM Recipe WHERE RecipeName="+ "'"+recipename+"'")
+    cursor.execute(squery1)
+    result1 = cursor.fetchall()
+    return render_template('Recipe.html',recipe=result1[0])
+
 #-----ORDERS------#
 
 

@@ -20,7 +20,6 @@ rh.mq.enableButtons = function() {
 			$(".edit-actions").removeClass("hidden");
 			$(this).html("Done");
 		}
-		rh.mq.hideNavbar();
 	});
 	// $("#add-quote").click(function(){
 	// 	$("#insert-quote-modal .modal-title").html("Add a MovieQuote");
