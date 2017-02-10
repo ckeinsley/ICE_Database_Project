@@ -33,10 +33,7 @@ def recipe_page():
     squery1 = ("SELECT* FROM Recipe WHERE RecipeName="+ "'"+recipename+"'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
-    rows = []
-    for row in result1:
-        rows.append(row)
-    return render_template('Recipe.html',recipe=rows)
+    return render_template('Recipe.html',recipe=result1[0])
 
 #-----ORDERS------#
 
@@ -59,7 +56,6 @@ def customerList_page():
     squery = ("SELECT Username, Balance FROM Account")
     cursor.execute(squery)
     results = cursor.fetchall()
-    #('dante', )
     rows = []
     for row in results:
         rows.append(row)
