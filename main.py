@@ -47,13 +47,15 @@ def orderList_page():
 
 @APP.route('/Order')
 def order_page():
-    guestnumber = request.args.get('name')
+    #TODO get the guest number from page and pass that into the SQLquery
+    guestnumber = request.args.get('guestnumber')
     cursor = CONNECTION.cursor()
-    squery1 = ("Select * from [Check], Orders where [Check].GuestNumber = Orders.GuestNumber and [Check].GuestNumber = 111")
-    cursor.execute(squery1)
-    return cursor.fetchall()
-    # result1 = cursor.fetchall()
-    # return render_template('Order.html')
+    squery = ("Select * from [Check], Orders where[Check].GuestNumber "
+              + "= Orders.GuestNumber and [Check].GuestNumber = 111")
+    cursor.execute(squery)
+    result = cursor.fetchall()
+    return render_template('Order.html', orderInfo=result)
+
 
 @APP.route('/Order', methods=['POST'])
 def order_page_post():
