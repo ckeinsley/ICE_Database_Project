@@ -17,7 +17,14 @@ def hello_world():
 
 @APP.route('/Menu')
 def menu_page():
-    return render_template('Menu.html')
+    cursor = CONNECTION.cursor()
+    squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
+    cursor.execute(squery)
+    results = cursor.fetchall()
+    rows = []
+    for row in results:
+        rows.append(row)
+    return render_template("Menu.html", recipe=rows)
 
 #-----ORDERS------#
 
