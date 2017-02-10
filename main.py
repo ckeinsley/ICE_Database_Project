@@ -1,5 +1,5 @@
 # from __future__ import print_function
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, url_for, redirect
 import pypyodbc
 # import sys
 
@@ -14,6 +14,7 @@ CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulma
 def hello_world():
     return render_template('Welcome.html')
 
+#-----------MENU----------------#
 
 @APP.route('/Menu')
 def menu_page():
@@ -26,14 +27,17 @@ def menu_page():
         rows.append(row)
     return render_template("Menu.html", menu=rows)
 
+#---------------RECIPE-------------------#
+
 @APP.route('/Recipe')
 def recipe_page():
-    recipename=request.args.get('name')
+    recipename = request.args.get('name')
     cursor = CONNECTION.cursor()
-    squery1 = ("SELECT* FROM Recipe WHERE RecipeName="+ "'"+recipename+"'")
+    squery1 = ("SELECT* FROM Recipe WHERE RecipeName=" +
+               "'" + recipename + "'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
-    return render_template('Recipe.html',recipe=result1[0])
+    return render_template('Recipe.html', recipe=result1[0])
 
 #-----ORDERS------#
 
@@ -45,7 +49,20 @@ def orderList_page():
 
 @APP.route('/Order')
 def order_page():
-    return render_template('Order.html')
+    #TODO get the guest number from page and pass that into the SQLquery
+    guestnumber = request.args.get('guestnumber')
+    cursor = CONNECTION.cursor()
+    squery = ("Select * from [Check], Orders where[Check].GuestNumber "
+              + "= Orders.GuestNumber and [Check].GuestNumber = 111")
+    cursor.execute(squery)
+    result = cursor.fetchall()
+    return render_template('Order.html', orderInfo=result)
+
+
+@APP.route('/Order', methods=['POST'])
+def order_page_post():
+    # Lets do a query
+    return redirect(url_for('order_page'))
 
 #-----CUSTOMERS----------#
 
@@ -64,12 +81,12 @@ def customerList_page():
 
 @APP.route('/Customer')
 def customer_page():
-    username=request.args.get('user')
+    username = request.args.get('user')
     cursor = CONNECTION.cursor()
-    squery1 = ("SELECT* FROM Account WHERE Username="+ "'"+username+"'")
+    squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
-    return render_template('Customer.html',customer=result1[0])
+    return render_template('Customer.html', customer=result1[0])
 
 #-------INGREDIENTS----------#
 
