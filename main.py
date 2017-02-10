@@ -61,7 +61,7 @@ def order_page():
     username=request.args.get('user')
     date=request.args.get('time')
     cursor = CONNECTION.cursor()
-    squery = ("SELECT* FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=%d", guestnumber)
+    squery = ("SELECT* FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=? ;", guestnumber)
     cursor.execute(squery)
     result = cursor.fetchall()
     return render_template('Order.html', orderInfo=result)
@@ -102,7 +102,7 @@ def customer_page():
 @APP.route('/IngredientList')
 def ingredientList_page():
     cursor = CONNECTION.cursor()
-    squery = ("SELECT IngredientName, Quantity, Units FROM Stock, Ingredient WHERE Stock.IngredientName=Ingredient.IngredientName")
+    squery = ("SELECT IngredientName, Quantity, Units FROM Stock, Ingredient WHERE Stock.IngredientName=Ingredient.IngredientName;")
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
