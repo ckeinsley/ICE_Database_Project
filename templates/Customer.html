@@ -107,10 +107,13 @@
 
         <script language="JavaScript">
             function myFunc(customer)
-            var table = document.getElementById("vertical-1")
-            var i;
-            for (i = 0; i < customer.size(); i++) {
-                table.insertRow(customer[i]);
+            document.write("Hello World!")
+            for (var i = 0; i < customer.length; i++) {
+                var obj = customer[i];
+                for (var key in obj) {
+                    var value = obj[key]
+                    document.write(value);
+                }
             }
         </script>
         <div class="name-container">

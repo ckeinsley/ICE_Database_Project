@@ -44,7 +44,8 @@ def customer_page():
     cursor.execute(squery)
     results = cursor.fetchall()
     #('dante', )
-    mystring = ''.join(map(str, results))
+    mystring = jsonify(results)
+    # mystring = ''.join(map(str, results))
     #dante
     return render_template('Customer.html', customer=mystring)
 
