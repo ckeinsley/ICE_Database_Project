@@ -102,7 +102,7 @@ def customer_page():
 @APP.route('/IngredientList')
 def ingredientList_page():
     cursor = CONNECTION.cursor()
-    squery = ("SELECT IngredientName, Quantity FROM Stock")
+    squery = ("SELECT IngredientName, Quantity, Units FROM Stock, Ingredient WHERE Stock.IngredientName=Ingredient.IngredientName")
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
