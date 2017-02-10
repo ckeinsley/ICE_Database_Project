@@ -105,22 +105,18 @@
             <h2>Team ICE</h2>
         </div>
 
-        <script language="JavaScript">
-            function myFunc(customer)
-            document.write("Hello World!")
-            for (var i = 0; i < customer.length; i++) {
-                var obj = customer[i];
-                for (var key in obj) {
-                    var value = obj[key]
-                    document.write(value);
-                }
-            }
-        </script>
         <div class="name-container">
             <h1 class="name">Aaron Wilkin</h1>
         </div>
         <div class="main-container" style="padding-top: 2em">
-            <table class="table table-hover" id="vertical-1" onload="myFunc({{customer}})">
+            <table class="table table-hover" id="vertical-1">
+                {% for row in data %}
+                <tr>
+                    {% for d in row %}
+                    <td>{{ d }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
                 <tr>
                     <th>Username</th>
                     <td>wilkin</td>

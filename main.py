@@ -56,11 +56,12 @@ def customer_page():
     cursor.execute(squery)
     results = cursor.fetchall()
     #('dante', )
-    mystring = jsonify(results)
-    print(mystring)
+    rows = []
+    for row in results:
+        rows.append(row)
     # mystring = ''.join(map(str, results))
     # dante
-    return render_template('Customer.html', customer=mystring)
+    return render_template('Customer.html', data=rows)
 
 #-------INGREDIENTS----------#
 
