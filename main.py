@@ -33,7 +33,10 @@ def recipe_page():
     squery1 = ("SELECT* FROM Recipe WHERE RecipeName="+ "'"+recipename+"'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
-    return render_template('Recipe.html',recipe=result1[0])
+    rows = []
+    for row in results1:
+        rows.append(row)
+    return render_template('Recipe.html',recipe=rows)
 
 #-----ORDERS------#
 
