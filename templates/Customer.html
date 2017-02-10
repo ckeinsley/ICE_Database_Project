@@ -105,16 +105,19 @@
             <h2>Team ICE</h2>
         </div>
 
-
+        <script language="JavaScript">
+            function myFunc(customer)
+            var table = document.getElementById("vertical-1")
+            var i;
+            for (i = 0; i < customer.size(); i++) {
+                table.insertRow(customer[i]);
+            }
+        </script>
         <div class="name-container">
             <h1 class="name">Aaron Wilkin</h1>
-            <h1 class="test">
-                <h1>{{customer}}</h1>
-            </h1>
         </div>
-
         <div class="main-container" style="padding-top: 2em">
-            <table class="table table-hover" id="vertical-1">
+            <table class="table table-hover" id="vertical-1" onload="myFunc({{customer}})">
                 <tr>
                     <th>Username</th>
                     <td>wilkin</td>
