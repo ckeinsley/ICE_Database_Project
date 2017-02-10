@@ -51,7 +51,7 @@ def customerList_page():
 def customer_page():
     username=request.args.get('user')
     cursor = CONNECTION.cursor()
-    squery = ("SELECT* FROM Account WHERE Username=username")
+    squery = ("SELECT* FROM Account WHERE Username="+username)
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
