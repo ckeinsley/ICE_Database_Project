@@ -1,5 +1,5 @@
-from flask import Flask, request, render_template, jsonify
 from __future__ import print_function
+from flask import Flask, request, render_template, jsonify
 import pypyodbc
 import sys
 
