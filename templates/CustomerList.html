@@ -82,8 +82,8 @@
                 </ul>
             </div>
         <div class="customer-list-container">
-            <a href="Customer">
-                {% for name in customer %}
+            {% for name in customer %}
+            <a href="Customer?user={{name[0]}}">
                 <div class="every-customer-list-container">
                     <div class="panel-header">
                         <h1 class="name" id="display-name">Aaron Wilkin</h1>
@@ -93,8 +93,8 @@
                         <div class="balance" id="display-balance">Current Balance: {{name[1]}}</div>
                     </div>
                 </div>
-                {% endfor %}
             </a>
+            {% endfor %}
             <div class="back-home">
                 <a href="Welcome">Main Page</a>
             </div>

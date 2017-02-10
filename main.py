@@ -44,28 +44,21 @@ def customerList_page():
     rows = []
     for row in results:
         rows.append(row)
-
-    # mystring = jsonify(results)
-    # print(mystring)
-    # dante
     return render_template("CustomerList.html", customer=rows)
 
 
 @APP.route('/Customer')
 def customer_page():
-    # cursor = CONNECTION.cursor()
-    # squery = ("SELECT Username FROM Account")
-    # cursor.execute(squery)
-    # results = cursor.fetchall()
-    #('dante', )
-    # mystring = jsonify(results)
-    # print(mystring, file=sys.stderr)
-    # sys.stderr.flush()
-    # mystring = ''.join(map(str, results))
-    # dante
-    # return render_template('Customer.html', data=mystring)
+    username=request.args.get('user')
+    cursor = CONNECTION.cursor()
+    squery = ("SELECT* FROM Account WHERE Username=username")
+    cursor.execute(squery)
+    results = cursor.fetchall()
+    rows = []
+    for row in results:
+        rows.append(row)
 
-    return render_template('Customer.html')
+    return render_template('Customer.html',customer=rows)
 
 #-------INGREDIENTS----------#
 
