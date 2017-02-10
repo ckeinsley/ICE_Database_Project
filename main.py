@@ -58,9 +58,10 @@ def orderList_page():
 def order_page():
     #TODO get the guest number from page and pass that into the SQLquery
     guestnumber = request.args.get('guestnumber')
+    username=request.args.get('user')
+    date=request.args.get('time')
     cursor = CONNECTION.cursor()
-    squery = ("Select * from [Check], Orders where[Check].GuestNumber "
-              + "= Orders.GuestNumber and [Check].GuestNumber = 111")
+    squery = ("Select * from [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber and [Check].GuestNumber="+"'"+guestnumber)
     cursor.execute(squery)
     result = cursor.fetchall()
     return render_template('Order.html', orderInfo=result)
