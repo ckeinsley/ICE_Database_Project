@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify
+import json
 import pypyodbc
 
 APP = Flask(__name__)
@@ -61,7 +62,9 @@ def customer_page():
     mystring = jsonify(results)
     # mystring = ''.join(map(str, results))
     # dante
-    return render_template('Customer.html', data=mystring)
+    # return render_template('Customer.html', data=mystring)
+    data = [1, "foo"]
+    return render_template('index.html', data=map(json.dumps, data))
 
 #-------INGREDIENTS----------#
 
