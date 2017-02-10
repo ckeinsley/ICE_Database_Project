@@ -101,7 +101,14 @@ def customer_page():
 
 @APP.route('/IngredientList')
 def ingredientList_page():
-    return render_template('IngredientList.html')
+    cursor = CONNECTION.cursor()
+    squery = ("SELECT IngredientName, Quantity FROM Stock")
+    cursor.execute(squery)
+    results = cursor.fetchall()
+    rows = []
+    for row in results:
+        rows.append(row)
+    return render_template('IngredientList.html',ingredientlist=rows)
 
 
 @APP.route('/Ingredient')

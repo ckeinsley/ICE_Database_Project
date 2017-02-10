@@ -84,17 +84,19 @@
                 </ul>
             </div>
         <div class="ingredient-list-container">
+            {% for ingredient in ingredientlist %}
             <a href="Ingredient">
                 <div class="every-ingredient-list-container">
                     <div class="panel-header">
-                        <h1 class="name" id="display-name">Egg</h1>
+                        <h1 class="name" id="display-name">{{ingredient[0]}}</h1>
                     </div>
                     <div class="panel-body">
-                        <div class="amount">Amount: 100</div>
+                        <div class="amount">Amount: {{ingredient[1]}}</div>
                         <div class="more-info" id="display-info">More Info</div>
                     </div>
                 </div>
             </a>
+            {% endfor %}
             <div class="back-home">
                 <a href="Welcome">Main Page</a>
             </div>
