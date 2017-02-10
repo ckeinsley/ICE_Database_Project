@@ -110,13 +110,10 @@
         </div>
         <div class="main-container" style="padding-top: 2em">
             <table class="table table-hover" id="vertical-1">
-                {% for row in data %}
-                <tr>
-                    {% for d in row %}
-                    <td>{{ d }}</td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
+                {% for item in data %}
+                <span onclick=someFunction({{ item|safe }});>
+                    {{ item }}
+                    </span> {% endfor %}
                 <tr>
                     <th>Username</th>
                     <td>wilkin</td>
