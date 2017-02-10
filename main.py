@@ -1,7 +1,7 @@
-from __future__ import print_function
+# from __future__ import print_function
 from flask import Flask, request, render_template, jsonify
 import pypyodbc
-import sys
+# import sys
 
 APP = Flask(__name__)
 
@@ -41,11 +41,9 @@ def customerList_page():
     cursor.execute(squery)
     results = cursor.fetchall()
     #('dante', )
-    rows = [[]]
+    rows = []
     for row in results:
-        temp = []
-        temp.append([row["Username"], row["Balance"]])
-        rows.append(temp)
+        rows.append(row)
 
     # mystring = jsonify(results)
     # print(mystring)
@@ -55,14 +53,14 @@ def customerList_page():
 
 @APP.route('/Customer')
 def customer_page():
-    cursor = CONNECTION.cursor()
-    squery = ("SELECT Username FROM Account")
-    cursor.execute(squery)
-    results = cursor.fetchall()
+    # cursor = CONNECTION.cursor()
+    # squery = ("SELECT Username FROM Account")
+    # cursor.execute(squery)
+    # results = cursor.fetchall()
     #('dante', )
-    mystring = jsonify(results)
-    print(mystring, file=sys.stderr)
-    sys.stderr.flush()
+    # mystring = jsonify(results)
+    # print(mystring, file=sys.stderr)
+    # sys.stderr.flush()
     # mystring = ''.join(map(str, results))
     # dante
     # return render_template('Customer.html', data=mystring)
