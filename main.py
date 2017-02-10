@@ -44,7 +44,14 @@ def recipe_page():
 
 @APP.route('/OrderList')
 def orderList_page():
-    return render_template("OrderList.html")
+    cursor = CONNECTION.cursor()
+    squery = ("SELECT GuestNumber, TableNumber, Date/Time, Username FROM Check")
+    cursor.execute(squery)
+    results = cursor.fetchall()
+    rows = []
+    for row in results:
+        rows.append(row)
+    return render_template("OrderList.html",orderlist=rows)
 
 
 @APP.route('/Order')
