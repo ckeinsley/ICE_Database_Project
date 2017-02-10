@@ -39,9 +39,11 @@ def customerList_page():
     cursor.execute(squery)
     results = cursor.fetchall()
     #('dante', )
-    rows = []
+    rows = [[]]
     for row in results:
-        rows.append(row)
+        temp = []
+        temp.append([row["Username"], row["Balance"]])
+        rows.append(temp)
 
     # mystring = jsonify(results)
     # print(mystring)
