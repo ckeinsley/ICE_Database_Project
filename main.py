@@ -62,6 +62,7 @@ def customer_page():
     #('dante', )
     mystring = jsonify(results)
     print(mystring, file=sys.stderr)
+    sys.stderr.flush()
     # mystring = ''.join(map(str, results))
     # dante
     # return render_template('Customer.html', data=mystring)
