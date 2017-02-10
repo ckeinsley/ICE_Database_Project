@@ -35,7 +35,7 @@ def order_page():
 @APP.route('/CustomerList')
 def customerList_page():
     cursor = CONNECTION.cursor()
-    squery = ("SELECT Username FROM Account")
+    squery = ("SELECT Username, Balance FROM Account")
     cursor.execute(squery)
     results = cursor.fetchall()
     #('dante', )
