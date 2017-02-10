@@ -89,8 +89,8 @@
                 </ul>
             </div>
         <div class="menu-container">
+            {% for recipe in menu %}
                 <div class="every-recipe-container">
-                    {% for recipe in menu %}
                     <div class="panel-header">
                         <h1 class="name" id="display-name">{{recipe[0]}}
                             <button data-toggle="modal" data-target="#insert-recipe-modal"
@@ -109,8 +109,8 @@
                         <div class="rating" id="display-rating">Rating: {{recipe[5]}}</div>
                         </a>
                     </div>
-                    {% endfor %}
                 </div>
+                {% endfor %}
         </div>
          <div class="back-home">
                 <a href="Welcome">Main Page</a>
