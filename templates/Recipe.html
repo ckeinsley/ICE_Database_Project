@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Pizza</title>
+    <title>Recipe</title>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <!-- knockout -->
@@ -47,7 +47,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Name: {{recipe[0]}}</h1>
+            <h1>{{recipe[0]}}</h1>
         </div>
         <hr>
         <div class="container-fluid">
@@ -61,6 +61,13 @@
                     <div class="description">
                         <p>
                             {{recipe[4]}} 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-4">
+                    <div class="cook-time">
+                        <p>
+                            Estimate Cook Time: {{recipe[3]}} 
                         </p>
                     </div>
                 </div>
