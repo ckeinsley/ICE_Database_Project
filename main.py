@@ -34,6 +34,7 @@ def customerList_page():
     results = cursor.fetchall()
     #('dante', )
     mystring = jsonify(results)
+    print(mystring)
     #dante
     return render_template("CustomerList.html", customer=mystring)
 
@@ -45,6 +46,7 @@ def customer_page():
     results = cursor.fetchall()
     #('dante', )
     mystring = jsonify(results)
+    print(mystring)
     # mystring = ''.join(map(str, results))
     #dante
     return render_template('Customer.html', customer=mystring)
