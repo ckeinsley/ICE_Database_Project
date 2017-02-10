@@ -24,7 +24,7 @@ def menu_page():
     rows = []
     for row in results:
         rows.append(row)
-    return render_template("Menu.html", recipe=rows)
+    return render_template("Menu.html", menu=rows)
 
 #-----ORDERS------#
 

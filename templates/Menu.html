@@ -90,6 +90,7 @@
             </div>
         <div class="menu-container">
                 <div class="every-recipe-container">
+                    {% for recipe in menu %}
                     <div class="panel-header">
                         <h1 class="name" id="display-name">{{recipe[0]}}
                             <button data-toggle="modal" data-target="#insert-recipe-modal"
@@ -104,11 +105,12 @@
                     </div>
                     <div class="panel-body">
                         <a href="Recipe">
-                        <div class="price" id="display-price">Price: $13.00</div>
-                        <div class="calorie" id="display-calorie">Calorie: 200</div>
+                        <div class="price" id="display-price">Price: {{recipe[1]}}</div>
+                        <div class="rating" id="display-rating">Rating: {{recipe[5]}}</div>
+                        </a>
                     </div>
+                    {% endfor %}
                 </div>
-            </a>
         </div>
          <div class="back-home">
                 <a href="Welcome">Main Page</a>
