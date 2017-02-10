@@ -45,7 +45,7 @@ def recipe_page():
 @APP.route('/OrderList')
 def orderList_page():
     cursor = CONNECTION.cursor()
-    squery = ("SELECT GuestNumber, TableNumber, Date/Time, Username FROM Check")
+    squery = ("SELECT * FROM Check")
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
