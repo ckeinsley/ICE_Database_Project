@@ -27,7 +27,7 @@ def menu_page():
     return render_template("Menu.html", menu=rows)
 
 @APP.route('/Recipe')
-def customer_page():
+def recipe_page():
     recipename=request.args.get('name')
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT* FROM Recipe WHERE RecipeName="+ "'"+recipename+"'")
