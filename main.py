@@ -33,7 +33,7 @@ def customerList_page():
     cursor.execute(squery)
     results = cursor.fetchall()
     #('dante', )
-    mystring = jsonify(mystring)
+    mystring = jsonify(results)
     #dante
     return render_template("CustomerList.html", customer=mystring)
 
