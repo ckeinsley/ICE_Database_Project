@@ -49,7 +49,7 @@ def orderList_page():
 def order_page():
     return render_template('Order.html')
 
-@APP.route('/Order', method=['POST'])
+@APP.route('/Order', methods=['POST'])
 def order_page_post():
     return redirect(url_for('Order'))
 
