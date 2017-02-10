@@ -64,7 +64,7 @@ def customer_page():
     # dante
     # return render_template('Customer.html', data=mystring)
     data = [1, "foo"]
-    return render_template('index.html', data=map(json.dumps, data))
+    return render_template('Customer.html', data=map(json.dumps, data))
 
 #-------INGREDIENTS----------#
 
