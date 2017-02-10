@@ -51,7 +51,7 @@ def order_page():
 
 @APP.route('/Order', methods=['POST'])
 def order_page_post():
-    return redirect(url_for('Order'))
+    return redirect(url_for('order_page'))
 
 #-----CUSTOMERS----------#
 
