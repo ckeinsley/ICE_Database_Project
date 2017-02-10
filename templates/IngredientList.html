@@ -85,7 +85,7 @@
             </div>
         <div class="ingredient-list-container">
             {% for ingredient in ingredientlist %}
-            <a href="Ingredient">
+            <a href="Ingredient?name={{ingredient[0]}}">
                 <div class="every-ingredient-list-container">
                     <div class="panel-header">
                         <h1 class="name" id="display-name">{{ingredient[0]}}</h1>

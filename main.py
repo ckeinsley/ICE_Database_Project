@@ -113,7 +113,12 @@ def ingredientList_page():
 
 @APP.route('/Ingredient')
 def ingredient_page():
-    return render_template('Ingredient.html')
+    iname=request.args.get('name')
+    cursor = CONNECTION.cursor()
+    squery = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
+    cursor.execute(squery)
+    result = cursor.fetchall()
+    return render_template('Ingredient.html',info=result)
 
 if __name__ == "__main__":
     APP.run(host='0.0.0.0', port=8080, debug=True)
