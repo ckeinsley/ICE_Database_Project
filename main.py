@@ -51,11 +51,10 @@ def customerList_page():
 def customer_page():
     username=request.args.get('user')
     cursor = CONNECTION.cursor()
-    squery = ("SELECT* FROM Account WHERE Username="+ "'"+username+"'")
-    cursor.execute(squery)
-    results = cursor.fetchall()
-
-    return render_template('Customer.html',customer=results[0])
+    squery1 = ("SELECT* FROM Account WHERE Username="+ "'"+username+"'")
+    cursor.execute(squery1)
+    result1 = cursor.fetchall()
+    return render_template('Customer.html',customer=result1[0])
 
 #-------INGREDIENTS----------#
 
