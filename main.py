@@ -34,7 +34,7 @@ def recipe_page():
     cursor.execute(squery1)
     result1 = cursor.fetchall()
     rows = []
-    for row in results1:
+    for row in result1:
         rows.append(row)
     return render_template('Recipe.html',recipe=rows)
 
