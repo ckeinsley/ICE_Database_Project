@@ -14,6 +14,7 @@ CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulma
 def hello_world():
     return render_template('Welcome.html')
 
+#-----------MENU----------------#
 
 @APP.route('/Menu')
 def menu_page():
@@ -26,6 +27,7 @@ def menu_page():
         rows.append(row)
     return render_template("Menu.html", menu=rows)
 
+#---------------RECIPE-------------------#
 
 @APP.route('/Recipe')
 def recipe_page():
