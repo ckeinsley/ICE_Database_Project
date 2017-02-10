@@ -85,7 +85,7 @@
 
         <div class="order-list-container">
             {% for order in orderlist %}
-            <a href="Order?user={{order[2]}}time={{order[2]}}">
+            <a href="Order?user={{order[2]}}time={{order[1]}}guestnumber={{order[0]}}">
                 <div class="every-order-list-container">
                     <div class="panel-header">
                         <h1 class="table-number" id="display-table">Table No: {{order[3]}}</h1>
