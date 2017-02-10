@@ -1,5 +1,5 @@
 # from __future__ import print_function
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, url_for, redirect
 import pypyodbc
 # import sys
 
@@ -26,14 +26,16 @@ def menu_page():
         rows.append(row)
     return render_template("Menu.html", menu=rows)
 
+
 @APP.route('/Recipe')
 def recipe_page():
-    recipename=request.args.get('name')
+    recipename = request.args.get('name')
     cursor = CONNECTION.cursor()
-    squery1 = ("SELECT* FROM Recipe WHERE RecipeName="+ "'"+recipename+"'")
+    squery1 = ("SELECT* FROM Recipe WHERE RecipeName=" +
+               "'" + recipename + "'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
-    return render_template('Recipe.html',recipe=result1[0])
+    return render_template('Recipe.html', recipe=result1[0])
 
 #-----ORDERS------#
 
@@ -46,6 +48,10 @@ def orderList_page():
 @APP.route('/Order')
 def order_page():
     return render_template('Order.html')
+
+@APP.route('/Order', method=['POST'])
+def order_page_post():
+    return redirect(url_for('Order'))
 
 #-----CUSTOMERS----------#
 
@@ -64,12 +70,12 @@ def customerList_page():
 
 @APP.route('/Customer')
 def customer_page():
-    username=request.args.get('user')
+    username = request.args.get('user')
     cursor = CONNECTION.cursor()
-    squery1 = ("SELECT* FROM Account WHERE Username="+ "'"+username+"'")
+    squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
-    return render_template('Customer.html',customer=result1[0])
+    return render_template('Customer.html', customer=result1[0])
 
 #-------INGREDIENTS----------#
 
