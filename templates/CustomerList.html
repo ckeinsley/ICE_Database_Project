@@ -14,7 +14,7 @@
     <!-- local -->
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/main.js" type="text/javascript" charset="utf-8"></script>
-    <script language="JavaScript">
+    <!--<script language="JavaScript">
         function setinput() {
             document.getElementById('display-name').innerHTML =
                         document.getElementById("name-input").value;
@@ -23,7 +23,7 @@
             document.getElementById('display-balance').innerHTML =
                         document.getElementById("balance-input").value;
         }
-    </script>
+    </script>-->
     <style>
         .title-container{
             text-align:center;
@@ -88,7 +88,7 @@
                         <h1 class="name" id="display-name">Aaron Wilkin</h1>
                     </div>
                     <div class="panel-body">
-                        <div class="username" id="display-username">Username: wilkin</div>
+                        <div class="username" >{{customer}}</div>
                         <div class="balance" id="display-balance">Current Balance: $100</div>
                     </div>
                 </div>
