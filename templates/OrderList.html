@@ -14,14 +14,6 @@
     <!-- local -->
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/orderlist.js" type="text/javascript" charset="utf-8"></script>
-    <script language="JavaScript">
-        function setinput() {
-            document.getElementById('display-table').innerHTML =
-                        document.getElementById("table-input").value;
-            document.getElementById('display-guest').innerHTML =
-                        document.getElementById("guest-input").value;
-        }
-    </script>
     <style>
         .title-container{
             text-align:center;
@@ -81,6 +73,9 @@
                         <a id="add-order" data-toggle="modal"
                         data-target="#insert-order-modal" href="#">New Order</a>
                 </ul>
+                <ul class="nav navbar-nav navbar-right 2">
+                        <a id="toggle-edit" href="#">Edit</a>
+                </ul>   
             </div>
 
         <div class="order-list-container">
@@ -88,7 +83,16 @@
             <a href="Order?user={{order[2]}}&time={{order[1]}}&guestnumber={{order[0]}}">
                 <div class="every-order-list-container">
                     <div class="panel-header">
-                        <h1 class="table-number" id="display-table">Table No: {{order[3]}}</h1>
+                        <h1 class="table-number" id="display-table">Table: {{order[3]}}
+                            <button data-toggle="modal" data-target="#insert-order-modal"
+						type="button" class="edit-order btn btn-success hidden edit-actions">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button data-toggle="modal" data-target="#delete-order-modal"
+				        type="button" class="delete-order btn btn-danger hidden edit-actions">
+						        <span class="glyphicon glyphicon-remove"></span>
+				             </button>
+                        </h1>
                     </div>
                     <div class="panel-body">
                         <div class="guest-number" id="display-guest">Guest No:{{order[0]}}</div>
@@ -116,7 +120,7 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Create A New Order</h4>
                 </div>
-                <form method="POST" class="form-horizontal"
+                <form1 action="/insertorder" method="POST" class="form-horizontal"
                       role="form">
                     <div class="modal-body">
                         <div class="form-group">
@@ -148,9 +152,33 @@
                             <button type="submit" class="btn btn-primary" href="OrderList.html" onclick="setinput();">Create Order</button>
                         </div>
                     </div>
-                </form>
+                </form1>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+	<div class="modal fade" id="delete-order-modal" tabindex="-1"
+		role="dialog" aria-labelledby="Delete Order">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Delete Order</h4>
+				</div>
+				<form2 action="/deleteorder" method="POST" class="form" role="form">
+					<div class="modal-body">
+						<div>Are you wish to delete this order?</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-danger">Delete Order</button>
+					</div>
+				</form2>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
