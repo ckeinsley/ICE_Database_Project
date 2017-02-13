@@ -68,7 +68,7 @@ def order_page():
     squery+=str(guestnumber)
     cursor.execute(squery)
     result = cursor.fetchall()
-    return render_template('Order.html', orderInfo=result)
+    return render_template('Order.html', orderInfo=result[0])
 
 
 @APP.route('/Order', methods=['POST'])
