@@ -62,14 +62,17 @@ def order_page():
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')
     date = request.args.get('time', '')
-    cursor = CONNECTION.cursor()
-    squery = (
-        "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
-    squery+=str(guestnumber)
+
+
+    return "GuestNumber = " + str(guestnumber) + " Username = " + str(username) + " date = " + str(date)
+    # cursor = CONNECTION.cursor()
+    # squery = (
+        # "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
+    # squery+=str(guestnumber)
     # return squery
-    cursor.execute(squery)
-    result = cursor.fetchall()
-    return render_template('Order.html', orderInfo=result)
+    # cursor.execute(squery)
+    # result = cursor.fetchall()
+    # return render_template('Order.html', orderInfo=result)
 
 
 @APP.route('/Order', methods=['POST'])
