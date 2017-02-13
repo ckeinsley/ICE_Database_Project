@@ -29,16 +29,21 @@ rh.mq.enableButtons = function() {
 	// 	$("#insert-quote-modal input[name=entity_key]").val("").prop("disabled",true);
 	// 	rh.mq.hideNavbar();
 	// });
-	// $(".edit-movie-quote").click(function(){
-	// 	$("#insert-quote-modal .modal-title").html("Edit a MovieQuote");
-	// 	$("#insert-quote-modal button[type=submit]").html("Update Quote");
-	// 	var quote=$(this).find(".quote").html();
-	// 	var movie=$(this).find(".movie").html();
-	// 	var entityKey=$(this).find(".entity_key").html();
-	// 	$("#insert-quote-modal input[name=quote]").val(quote);
-	// 	$("#insert-quote-modal input[name=movie]").val(movie);
-	// 	$("#insert-quote-modal input[name=entity_key]").val(entityKey).prop("disabled",false);
-	// });
+	$(".edit-recipe").click(function(){
+		$("#insert-recipe-modal .modal-title").html("Edit a recipe");
+		$("#insert-recipe-modal button[type=submit]").html("Update Recipe");
+		var name=$(this).find(".name").html();
+		var price=$(this).find(".price").html();
+		var calorie=$(this).find(".calorie").html();
+		var img=$(this).find(".img").html();
+		var description=$(this).find(".description").html();
+		$("#insert-recipe-modal input[name=name]").val(name);
+		$("#insert-recipe-modal input[name=price]").val(price);
+		$("#insert-recipe-modal input[name=calorie]").val(calorie);
+		$("#insert-recipe-modal input[name=calorie]").val(calorie);
+		$("#insert-recipe-modal input[name=description]").val(description);
+		console.log("1="+name);
+	});
 	// $(".delete-movie-quote").click(function(){
 	// 	var entityKey=$(this).find(".entity_key").html();
 	// 	console.log("entity_key ="+entityKey);

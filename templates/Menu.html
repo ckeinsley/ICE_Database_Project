@@ -14,14 +14,6 @@
     <!-- local -->
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/menu.js" type="text/javascript" charset="utf-8"></script>
-    <script language="JavaScript">
-        function setinput() {
-            document.getElementById('display-table').innerHTML =
-                        document.getElementById("table-input").value;
-            document.getElementById('display-guest').innerHTML =
-                        document.getElementById("guest-input").value;
-        }
-    </script>
     <style>
         .title-container{
             text-align:center;
@@ -129,7 +121,7 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Add A New Dish</h4>
                 </div>
-                <form method="POST" class="form-horizontal"
+                <form1 action="/insertrecipe" method="POST" class="form-horizontal"
                       role="form">
                     <div class="modal-body">
                         <div class="form-group">
@@ -161,10 +153,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="img-input" class="col-sm-2 control-label">id:</label>
+                            <label for="img-input" class="col-sm-2 control-label">Description:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="check-input"
-                                       name="id" placeholder="id">
+                                       name="description" placeholder="id">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -172,12 +164,36 @@
                                     data-dismiss="modal">
                                 Cancel
                             </button>
-                            <button type="submit" class="btn btn-primary" href="OrderList.html" onclick="setinput();">Add Recipe</button>
+                            <button type="submit" class="btn btn-primary" href="OrderList.html" >Add Recipe</button>
                         </div>
                     </div>
-                </form>
+                </form1>
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+	<div class="modal fade" id="delete-recipe-modal" tabindex="-1"
+		role="dialog" aria-labelledby="Delete Recipe">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Delete Recipe</h4>
+				</div>
+				<form2 action="/deleterecipe" method="POST" class="form" role="form">
+					<div class="modal-body">
+						<div>Are you wish to delete this dish?</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-danger">Delete Recipe</button>
+					</div>
+				</form2>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
