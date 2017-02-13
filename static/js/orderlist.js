@@ -22,7 +22,7 @@ rh.mq.enableButtons = function() {
 		}
 	});
 	$("#add-order").click(function(){
-		$("#insert-ordee-modal .modal-title").html("Add a New Order");
+		$("#insert-order-modal .modal-title").html("Add a New Order");
 		$("#insert-order-modal button[type=submit]").html("Add Order");
 		
 		rh.mq.hideNavbar();
