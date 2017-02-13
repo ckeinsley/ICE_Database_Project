@@ -66,9 +66,10 @@ def order_page():
     squery = (
         "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
     squery+=str(guestnumber)
-    cursor.execute(squery)
-    result = cursor.fetchall()
-    return render_template('Order.html', orderInfo=result)
+    return squery
+    # cursor.execute(squery)
+    # result = cursor.fetchall()
+    # return render_template('Order.html', orderInfo=result)
 
 
 @APP.route('/Order', methods=['POST'])
