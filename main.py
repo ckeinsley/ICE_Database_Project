@@ -54,12 +54,12 @@ def orderList_page():
     return render_template("OrderList.html",orderlist=rows)
 
 
-@APP.route('/Order<user><time><guestnumber>',methods=['GET', 'POST'])
+@APP.route('/Order' ,methods=['GET', 'POST'])
 def order_page():
     #TODO get the guest number from page and pass that into the SQLquery
-    guestnumber = request.args.get('guestnumber')
-    username=request.args.get('user')
-    date=request.args.get('time')
+    guestnumber = request.get('guestnumber', '')
+    username=request.args.get('user', '')
+    date=request.args.get('time', '')
     cursor = CONNECTION.cursor()
     squery = ("SELECT* FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber="+"'"+guestnumber+"';")
     cursor.execute(squery)
