@@ -21,28 +21,25 @@ rh.mq.enableButtons = function() {
 			$(this).html("Done");
 		}
 	});
-	// $("#add-quote").click(function(){
-	// 	$("#insert-quote-modal .modal-title").html("Add a MovieQuote");
-	// 	$("#insert-quote-modal button[type=submit]").html("Add Quote");
-	// 	$("#insert-quote-modal input[name=quote]").val("");
-	// 	$("#insert-quote-modal input[name=movie]").val("");
-	// 	$("#insert-quote-modal input[name=entity_key]").val("").prop("disabled",true);
-	// 	rh.mq.hideNavbar();
-	// });
+	$("#add-recipe").click(function(){
+		$("#insert-recipe-modal .modal-title").html("Add a New Dish");
+		$("#insert-recipe-modal button[type=submit]").html("Add Recipe");
+		
+		rh.mq.hideNavbar();
+	});
 	$(".edit-recipe").click(function(){
 		$("#insert-recipe-modal .modal-title").html("Edit a recipe");
 		$("#insert-recipe-modal button[type=submit]").html("Update Recipe");
-		var name=$(this).find(".name").html();
-		var price=$(this).find(".price").html();
-		var calorie=$(this).find(".calorie").html();
-		var img=$(this).find(".img").html();
-		var description=$(this).find(".description").html();
-		$("#insert-recipe-modal input[name=name]").val(name);
-		$("#insert-recipe-modal input[name=price]").val(price);
-		$("#insert-recipe-modal input[name=calorie]").val(calorie);
-		$("#insert-recipe-modal input[name=calorie]").val(calorie);
-		$("#insert-recipe-modal input[name=description]").val(description);
-		console.log("1="+name);
+		// var name=$(this).find(".name").html();
+		// var price=$(this).find(".price").html();
+		// var calorie=$(this).find(".calorie").html();
+		// var img=$(this).find(".img").html();
+		// var description=$(this).find(".description").html();
+		// $("#insert-recipe-modal input[name=name]").val(name);
+		// $("#insert-recipe-modal input[name=price]").val(price);
+		// $("#insert-recipe-modal input[name=calorie]").val(calorie);
+		// $("#insert-recipe-modal input[name=calorie]").val(calorie);
+		// $("#insert-recipe-modal input[name=description]").val(description);
 	});
 	// $(".delete-movie-quote").click(function(){
 	// 	var entityKey=$(this).find(".entity_key").html();
