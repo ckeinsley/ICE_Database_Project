@@ -59,17 +59,17 @@ def orderList_page():
 @APP.route('/Order', methods=['GET', 'POST'])
 def order_page():
     # TODO get the guest number from page and pass that into the SQLquery
-    guestnumber = request.form.get('guestnumber', '')
-    username = request.form.get('user', '')
-    date = request.form.get('time', '')
+    guestnumber = request.args.get('guestnumber', '')
+    username = request.args.get('user', '')
+    date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
     squery = (
         "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
     squery+=str(guestnumber)
-    return squery
-    # cursor.execute(squery)
-    # result = cursor.fetchall()
-    # return render_template('Order.html', orderInfo=result)
+    # return squery
+    cursor.execute(squery)
+    result = cursor.fetchall()
+    return render_template('Order.html', orderInfo=result)
 
 
 @APP.route('/Order', methods=['POST'])
