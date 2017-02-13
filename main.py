@@ -57,7 +57,7 @@ def orderList_page():
 @APP.route('/Order' ,methods=['GET', 'POST'])
 def order_page():
     #TODO get the guest number from page and pass that into the SQLquery
-    guestnumber = request.get('guestnumber', '')
+    guestnumber = request.args.get('guestnumber', '')
     username=request.args.get('user', '')
     date=request.args.get('time', '')
     cursor = CONNECTION.cursor()
