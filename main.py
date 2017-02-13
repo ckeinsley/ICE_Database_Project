@@ -59,22 +59,21 @@ def orderList_page():
 @APP.route('/Order', methods=['GET', 'POST'])
 def order_page():
     # TODO get the guest number from page and pass that into the SQLquery
-    guestnumber = request.args.get('guestnumber', '')
-    username = request.args.get('user', '')
-    date = request.args.get('time', '')
-    cursor = CONNECTION.cursor()
-    squery = (
-        "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
-    squery+=str(guestnumber)
-    cursor.execute(squery)
-    result = cursor.fetchall()
-    return render_template('Order.html', orderInfo=result[0])
-
-
-@APP.route('/Order', methods=['POST'])
-def order_page_post():
-    # Lets do a query
-    return redirect(url_for('order_page'))
+    if request.method == 'GET':
+        guestnumber = request.args.get('guestnumber', '')
+        username = request.args.get('user', '')
+        date = request.args.get('time', '')
+        cursor = CONNECTION.cursor()
+        squery = (
+            "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
+        squery+=str(guestnumber)
+        cursor.execute(squery)
+        result = cursor.fetchall()
+        return render_template('Order.html', orderInfo=result)
+    if request.method == 'POST':
+        pass
+    else:
+        return render_template('Order.html')
 
 #-----CUSTOMERS----------#
 
