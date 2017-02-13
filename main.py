@@ -64,7 +64,7 @@ def order_page():
     date = request.form.get('time', '')
     cursor = CONNECTION.cursor()
     squery = (
-        "SELECT* FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=" + guestnumber + ";")
+        "SELECT* FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=" + guestnumber)
     cursor.execute(squery)
     result = cursor.fetchall()
     return render_template('Order.html', orderInfo=result)
