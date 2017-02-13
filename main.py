@@ -16,6 +16,7 @@ def hello_world():
 
 #-----------MENU----------------#
 
+
 @APP.route('/Menu')
 def menu_page():
     cursor = CONNECTION.cursor()
@@ -28,6 +29,7 @@ def menu_page():
     return render_template("Menu.html", menu=rows)
 
 #---------------RECIPE-------------------#
+
 
 @APP.route('/Recipe')
 def recipe_page():
@@ -51,17 +53,18 @@ def orderList_page():
     rows = []
     for row in results:
         rows.append(row)
-    return render_template("OrderList.html",orderlist=rows)
+    return render_template("OrderList.html", orderlist=rows)
 
 
-@APP.route('/Order' ,methods=['GET', 'POST'])
+@APP.route('/Order', methods=['GET', 'POST'])
 def order_page():
-    #TODO get the guest number from page and pass that into the SQLquery
-    guestnumber = request.args.get('guestnumber', '')
-    username=request.args.get('user', '')
-    date=request.args.get('time', '')
+    # TODO get the guest number from page and pass that into the SQLquery
+    guestnumber = request.form.get('guestnumber', '')
+    username = request.form.get('user', '')
+    date = request.form.get('time', '')
     cursor = CONNECTION.cursor()
-    squery = ("SELECT* FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber="+"'"+guestnumber+"';")
+    squery = (
+        "SELECT* FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=" + guestnumber + ";")
     cursor.execute(squery)
     result = cursor.fetchall()
     return render_template('Order.html', orderInfo=result)
@@ -108,17 +111,17 @@ def ingredientList_page():
     rows = []
     for row in results:
         rows.append(row)
-    return render_template('IngredientList.html',ingredientlist=rows)
+    return render_template('IngredientList.html', ingredientlist=rows)
 
 
 @APP.route('/Ingredient')
 def ingredient_page():
-    iname=request.args.get('name')
+    iname = request.args.get('name')
     cursor = CONNECTION.cursor()
     squery = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
     cursor.execute(squery)
     result = cursor.fetchall()
-    return render_template('Ingredient.html',info=result[0])
+    return render_template('Ingredient.html', info=result[0])
 
 if __name__ == "__main__":
     APP.run(host='0.0.0.0', port=8080, debug=True)
