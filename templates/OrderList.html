@@ -80,7 +80,7 @@
 
         <div class="order-list-container">
             {% for order in orderlist %}
-            <a href="Order?user={{order[2]}}&time={{order[1]}}&guestnumber={{order[0]}}">
+            
                 <div class="every-order-list-container">
                     <div class="panel-header">
                         <h1 class="table-number" id="display-table">Table: {{order[3]}}
@@ -95,12 +95,14 @@
                         </h1>
                     </div>
                     <div class="panel-body">
+                        <a href="Order?user={{order[2]}}&time={{order[1]}}&guestnumber={{order[0]}}">
                         <div class="guest-number" id="display-guest">Guest No:{{order[0]}}</div>
                         <div class="date">{{order[1]}}</div>
                         <div class="check">Total: $22.75</div>
+                        </a>
                     </div>
                 </div>
-            </a>
+           
             {% endfor %}
         </div>
          <div class="back-home">
