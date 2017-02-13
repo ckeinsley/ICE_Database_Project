@@ -54,7 +54,7 @@ def orderList_page():
     return render_template("OrderList.html",orderlist=rows)
 
 
-@APP.route('/Order/<user><time><guestnumber>',methods=['GET', 'POST'])
+@APP.route('/Order<user><time><guestnumber>',methods=['GET', 'POST'])
 def order_page():
     #TODO get the guest number from page and pass that into the SQLquery
     guestnumber = request.args.get('guestnumber')
