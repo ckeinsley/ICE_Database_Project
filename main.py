@@ -58,7 +58,6 @@ def orderList_page():
 
 @APP.route('/Order', methods=['GET', 'POST'])
 def order_page():
-    # TODO get the guest number from page and pass that into the SQLquery     
     if request.method == 'POST':
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('name')
