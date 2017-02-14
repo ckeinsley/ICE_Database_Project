@@ -126,13 +126,9 @@ def customer_page():
     result1 = cursor.fetchall()
     cursor.execute(squery2)
     result2 = cursor.fetchall()
-<<<<<<< HEAD
     cursor.execute(squery3)
     result3 = cursor.fetchall()
     return render_template('Customer.html', customer=result1[0],hisorder=result2,fav=result3[0])
-=======
-    return render_template('Customer.html', customer=result1[0], hisorder=result2)
->>>>>>> ce808d0fc3e64618ac2d30b5723bc1bc2d5afb49
 
 #-------INGREDIENTS----------#
 
