@@ -40,7 +40,7 @@ def recipe_page():
             "WHERE RecipeName = '" + name + "'"
     cursor.execute(squery)
     result = cursor.fetchone()
-    return render_template('Recipe.html', recipe=result[0])
+    return render_template('Recipe.html', recipe=result)
 
 @APP.route('/insertrecipe', methods=['POST'])
 def add_recipe():
