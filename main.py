@@ -77,15 +77,24 @@ def order_page():
     username = request.args.get('user', '')
     date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
-    squery = "Select Orders.GuestNumber, [Date/Time], TableNumber, Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
+    squery = "Select Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
             "From [Check], Orders, Recipe " \
             "Where [Check].GuestNumber = Orders.GuestNumber " \
             "And Orders.RecipeName = Recipe.RecipeName " \
             "AND [Check].GuestNumber = " + guestnumber
+    
+    squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber" \
+            "From [Check], Orders " \
+            "Where [Check].GuestNumber = Orders.GuestNumber " \
+            "AND [Check].GuestNumber = " + guestnumber
+
     cursor.execute(squery)
-    result = cursor.fetchall()
+    recipesOrdered = cursor.fetchall()
+
+    cursor.execute(squery2)
+    checkInfo = cursor.fetchone()
     #TODO return the rest of the results and populate the rest of the information on the website
-    return render_template('Order.html', orderInfo=result[0])
+    return render_template('Order.html', orderInfo=recipesOrdered, checkInfo = checkInfo)
 
 
 #-----CUSTOMERS----------#
