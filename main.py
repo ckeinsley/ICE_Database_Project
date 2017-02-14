@@ -35,11 +35,11 @@ def menu_page():
 def recipe_page():
     recipename = request.args.get('name')
     cursor = CONNECTION.cursor()
-    squery1 = ("SELECT* FROM Recipe WHERE RecipeName=" +
-               "'" + recipename + "'")
-    cursor.execute(squery1)
-    result1 = cursor.fetchall()
-    return render_template('Recipe.html', recipe=result1[0])
+    squery = "SELECT RecipeName, Description, NutritionalInfo, CookTime, PictureURL " \
+            "FROM Recipe WHERE RecipeName = " + recipename
+    cursor.execute(squery)
+    result = cursor.fetchone()
+    return render_template('Recipe.html', recipe=result[0])
 
 @APP.route('/insertrecipe', methods=['POST'])
 def add_recipe():
@@ -83,7 +83,7 @@ def order_page():
             "And Orders.RecipeName = Recipe.RecipeName " \
             "AND [Check].GuestNumber = " + guestnumber
     
-    squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber" \
+    squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber "  \
             "From [Check], Orders " \
             "Where [Check].GuestNumber = Orders.GuestNumber " \
             "AND [Check].GuestNumber = " + guestnumber
@@ -93,7 +93,6 @@ def order_page():
 
     cursor.execute(squery2)
     checkInfo = cursor.fetchone()
-    #TODO return the rest of the results and populate the rest of the information on the website
     return render_template('Order.html', orderInfo=recipesOrdered, checkInfo = checkInfo)
 
 

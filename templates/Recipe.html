@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,38 +8,38 @@
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <!-- knockout -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" type="text/javascript"
-            charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js" type="text/javascript" charset="utf-8"></script>
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- local -->
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/main.js" type="text/javascript" charset="utf-8" async defer></script>
 
     <style>
-        .header{
-             font-size: 3em;
+        .header {
+            font-size: 3em;
         }
-        .img-container{
-            background: url("http://www.cicis.com/media/1137/pizza_trad_alfredo.png") no-repeat;
-            background-size:contain;
-            width:300px;
-            height:500px;
+        
+        .img-container {
+            background: url("{{recipe[4]}}") no-repeat;
+            background-size: contain;
+            width: 300px;
+            height: 500px;
         }
+        
         p::first-letter {
-            font:bold 2em "Lucida Handwriting",script;
-            color:red;
-      }
-        .description{
+            font: bold 2em "Lucida Handwriting", script;
+            color: red;
+        }
+        
+        .description {
             font-size: 2em;
         }
-        .back-home{
+        
+        .back-home {
             font-size: 2.2em;
-            text-align:right;
+            text-align: right;
             padding-top: 0;
         }
     </style>
@@ -54,35 +55,36 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4">
                     <div class="img-container">
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-4">
                     <div class="description">
                         <p>
-                            {{recipe[4]}} 
+                            {{recipe[1]}}
                         </p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8 col-md-4">
-                    <div class="info">
-                        <ul>
-                            {{recipe[3]}} 
-                        </ul>
-                    </div>
+                <div class="info">
+                    <ul>
+                        {{recipe[2]}}
+                    </ul>
+                </div>
             </div>
             <div class="col-lg-8 col-md-4">
-                    <div class="cook-time">
-                        <ul>
-                            Estimate Cook Time: {{recipe[2]}} 
-                        </ul>
-                    </div>
+                <div class="cook-time">
+                    <ul>
+                        Estimate Cook Time: {{recipe[3]}}
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="back-home">
-                <a href="Welcome">Main Page</a>
+            <a href="Welcome">Main Page</a>
         </div>
     </div>
 </body>
+
 </html>
