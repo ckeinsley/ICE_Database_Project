@@ -118,11 +118,14 @@ def customer_page():
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
     squery2 = ("SELECT * FROM [CHECK] WHERE Username=" + "'" + username + "'")
+    squery3 = ("SELECT * FROM Favorite WHERE Username=" + "'" + username + "'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
     cursor.execute(squery2)
     result2 = cursor.fetchall()
-    return render_template('Customer.html', customer=result1[0],hisorder=result2)
+    cursor.execute(squery3)
+    result3 = cursor.fetchall()
+    return render_template('Customer.html', customer=result1[0],hisorder=result2,fav=result3[0])
 
 #-------INGREDIENTS----------#
 
