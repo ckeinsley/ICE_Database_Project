@@ -72,8 +72,6 @@ def order_page():
         sqlquer = "exec AddOrder " + str(guestnumber) + " , " + str(recipename) + " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
-        return redirect(url_for(order_page()))
-
 
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')
