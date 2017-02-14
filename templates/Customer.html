@@ -104,9 +104,13 @@
             <h1>Introvert Cafe</h1>
             <h2>Team ICE</h2>
         </div>
-
+        <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right 2">
+                        <a id="toggle-edit" href="#">Edit</a>
+                </ul>
+        </div>
         <div class="name-container">
-            <h1 class="name">Aaron Wilkin</h1>
+            <h1 class="name">{{customer[3]}}</h1>
         </div>
         <div class="main-container" style="padding-top: 2em">
             <table class="table table-hover" id="vertical-1">
@@ -140,6 +144,10 @@
                         <div class="table-number" id="display-table">Table No: {{order[3]}}</div>
                         <div class="guest-number" id="display-guest">Guest No: {{order[0]}}</div>
                         <div class="check">Total: $22.75</div>
+                        <button data-toggle="modal" data-target="#edit-info-modal"
+						type="button" class="edit-ingredient btn btn-success hidden edit-actions">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
                     </div>
                     </a>
                 </div>
@@ -149,6 +157,68 @@
             <a href="Welcome">Main Page</a>
         </div>
     </div>
-</body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="edit-info-modal" tabindex="-1"
+         role="dialog" aria-labelledby="Edit Info">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Customer Info</h4>
+                </div>
+                <form method="POST" class="form-horizontal"
+                      role="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name-input" class="col-sm-2 control-label">Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name-input"
+                                       name="table" placeholder="Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="username-input" class="col-sm-2 control-label">Username:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="guest-input"
+                                       name="username" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="favorite-input" class="col-sm-2 control-label">Favorite:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="favorite-input"
+                                       name="favorite" placeholder="Favorite">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-input" class="col-sm-2 control-label">Card No:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="card-input"
+                                       name="card" placeholder="Card No">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="balance-input" class="col-sm-2 control-label">Balance:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="balance-input"
+                                       name="balance" placeholder="Balance">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary" href="Customer?user={{order[2]}}" onclick="setinput();">Add Ingredient</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
