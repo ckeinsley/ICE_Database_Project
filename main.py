@@ -65,6 +65,9 @@ def order_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddOrder " + str(guestnumber) + " , " + str(recipename) + " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
+        results = cursor.fetchall()
+        return results
+
 
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')
