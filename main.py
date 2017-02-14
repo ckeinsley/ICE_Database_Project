@@ -77,9 +77,11 @@ def order_page():
     username = request.args.get('user', '')
     date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
-    squery = (
-       "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
-    squery+=str(guestnumber)
+    squery = "Select Orders.GuestNumber, [Date/Time], TableNumber, Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
+            "From [Check], Orders, Recipe " \
+            "Where [Check].GuestNumber = Orders.GuestNumber " \
+            "And Orders.RecipeName = Recipe.RecipeName " \
+            "AND [Check].GuestNumber = " + guestnumber
     cursor.execute(squery)
     result = cursor.fetchall()
     #TODO return the rest of the results and populate the rest of the information on the website
