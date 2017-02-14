@@ -36,7 +36,8 @@ def recipe_page():
     recipename = request.args.get('name')
     cursor = CONNECTION.cursor()
     squery = "SELECT RecipeName, Description, NutritionalInfo, CookTime, PictureURL " \
-            "FROM Recipe WHERE RecipeName = " + recipename
+            "FROM Recipe " \
+            "WHERE RecipeName = " + recipename
     cursor.execute(squery)
     result = cursor.fetchone()
     return render_template('Recipe.html', recipe=result[0])
