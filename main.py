@@ -36,15 +36,16 @@ def recipe_page():
     name = request.args.get('name')
     cursor = CONNECTION.cursor()
     squery = "SELECT RecipeName, Description, NutritionalInfo, CookTime, PictureURL " \
-            "FROM Recipe " \
-            "WHERE RecipeName = '" + name + "'"
+        "FROM Recipe " \
+        "WHERE RecipeName = '" + name + "'"
     cursor.execute(squery)
     result = cursor.fetchone()
     return render_template('Recipe.html', recipe=result)
 
+
 @APP.route('/insertrecipe', methods=['POST'])
 def add_recipe():
-    name=request.form1['name']
+    name = request.form1['name']
     print(name)
     return render_template('Menu.html')
 
@@ -70,7 +71,9 @@ def order_page():
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddOrder " + str(guestnumber) + " , " + str(recipename) + " , " + str(quantity) + " , '' "
+        sqlquer = "exec AddOrder " + \
+            (guestnumber) + " , " + str(recipename) + \
+            " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -79,22 +82,22 @@ def order_page():
     date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
     squery = "Select Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
-            "From [Check], Orders, Recipe " \
-            "Where [Check].GuestNumber = Orders.GuestNumber " \
-            "And Orders.RecipeName = Recipe.RecipeName " \
-            "AND [Check].GuestNumber = " + guestnumber
-    
+        "From [Check], Orders, Recipe " \
+        "Where [Check].GuestNumber = Orders.GuestNumber " \
+        "And Orders.RecipeName = Recipe.RecipeName " \
+        "AND [Check].GuestNumber = " + guestnumber
+
     squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber "  \
-            "From [Check], Orders " \
-            "Where [Check].GuestNumber = Orders.GuestNumber " \
-            "AND [Check].GuestNumber = " + guestnumber
+        "From [Check], Orders " \
+        "Where [Check].GuestNumber = Orders.GuestNumber " \
+        "AND [Check].GuestNumber = " + guestnumber
 
     cursor.execute(squery)
     recipesOrdered = cursor.fetchall()
 
     cursor.execute(squery2)
     checkInfo = cursor.fetchone()
-    return render_template('Order.html', orderInfo=recipesOrdered, checkInfo = checkInfo)
+    return render_template('Order.html', orderInfo=recipesOrdered, checkInfo=checkInfo)
 
 
 #-----CUSTOMERS----------#
@@ -122,15 +125,25 @@ def customer_page():
     result1 = cursor.fetchall()
     cursor.execute(squery2)
     result2 = cursor.fetchall()
-    return render_template('Customer.html', customer=result1[0],hisorder=result2)
+    return render_template('Customer.html', customer=result1[0], hisorder=result2)
 
 #-------INGREDIENTS----------#
 
 
-@APP.route('/IngredientList')
+@APP.route('/IngredientList', methods=['POST', 'GET'])
 def ingredientList_page():
+    if request.method == 'POST':
+        nameOfIngredient = request.form.get('name', '')
+        nutriInfo = request.form.get('nutrinfo')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec AddIngredient " + str(nameOfIngredient) + " , " + str(nutriInfo) + " , 0"
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
     cursor = CONNECTION.cursor()
-    squery = ("SELECT Stock.IngredientName, Quantity, Units, ExpirationDate FROM Stock, Ingredient WHERE Stock.IngredientName=Ingredient.IngredientName;")
+    squery = "SELECT Stock.IngredientName, Quantity, Units, ExpirationDate " \
+        "FROM Stock, Ingredient " \
+        "WHERE Stock.IngredientName=Ingredient.IngredientName;"
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
