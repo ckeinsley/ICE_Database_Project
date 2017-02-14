@@ -80,7 +80,7 @@ def order_page():
     squery = "Select Orders.GuestNumber, [Date/Time], TableNumber, Orders.Recipe, Quantity, (Price*Quantity) as Price " \
             "From [Check], Orders, Recipe " \
             "Where [Check].GuestNumber = Orders.GuestNumber " \
-            "And Orders.RecipeName = Recipe.RecipeName" \
+            "And Orders.RecipeName = Recipe.RecipeName " \
             "AND [Check].GuestNumber = " + guestnumber
     cursor.execute(squery)
     result = cursor.fetchall()
