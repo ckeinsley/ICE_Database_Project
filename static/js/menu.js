@@ -24,8 +24,6 @@ rh.mq.enableButtons = function() {
 	$("#add-recipe").click(function(){
 		$("#insert-recipe-modal .modal-title").html("Add a New Dish");
 		$("#insert-recipe-modal button[type=submit]").html("Add Recipe");
-		
-		rh.mq.hideNavbar();
 	});
 	$(".edit-recipe").click(function(){
 		$("#insert-recipe-modal .modal-title").html("Edit a recipe");

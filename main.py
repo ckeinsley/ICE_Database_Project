@@ -43,8 +43,9 @@ def recipe_page():
 
 @APP.route('/insertrecipe', methods=['POST'])
 def add_recipe():
-    name=request.form['name']
+    name=request.form1['name']
     print(name)
+    return render_template('Menu.html')
 
 #-----ORDERS------#
 
