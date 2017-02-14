@@ -93,7 +93,6 @@ def order_page():
 
     cursor.execute(squery2)
     checkInfo = cursor.fetchone()
-    #TODO return the rest of the results and populate the rest of the information on the website
     return render_template('Order.html', orderInfo=recipesOrdered, checkInfo = checkInfo)
 
 
