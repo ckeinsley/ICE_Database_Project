@@ -83,7 +83,7 @@ def order_page():
             "And Orders.RecipeName = Recipe.RecipeName " \
             "AND [Check].GuestNumber = " + guestnumber
     
-    squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber" \
+    squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber "  \
             "From [Check], Orders " \
             "Where [Check].GuestNumber = Orders.GuestNumber " \
             "AND [Check].GuestNumber = " + guestnumber
