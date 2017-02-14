@@ -22,7 +22,6 @@ def menu_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
     cursor.execute(squery)
-    cursor.commit()
     results = cursor.fetchall()
     rows = []
     for row in results:
@@ -39,7 +38,6 @@ def recipe_page():
     squery1 = ("SELECT* FROM Recipe WHERE RecipeName=" +
                "'" + recipename + "'")
     cursor.execute(squery1)
-    cursor.commit()
     result1 = cursor.fetchall()
     return render_template('Recipe.html', recipe=result1[0])
 
@@ -73,7 +71,6 @@ def order_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddOrder " + str(guestnumber) + " , " + str(recipename) + " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
-        cursor.commit()
         results = cursor.fetchall()
         return results
 
@@ -86,7 +83,6 @@ def order_page():
        "SELECT * FROM [Check], Orders WHERE [Check].GuestNumber=Orders.GuestNumber AND [Check].GuestNumber=")
     squery+=str(guestnumber)
     cursor.execute(squery)
-    cursor.commit()
     result = cursor.fetchall()
     return render_template('Order.html', orderInfo=result[0])
 
@@ -99,7 +95,6 @@ def customerList_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT Username, Balance FROM Account")
     cursor.execute(squery)
-    cursor.commit()
     results = cursor.fetchall()
     rows = []
     for row in results:
@@ -113,7 +108,6 @@ def customer_page():
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
     cursor.execute(squery1)
-    cursor.commit()
     result1 = cursor.fetchall()
     return render_template('Customer.html', customer=result1[0])
 
@@ -125,7 +119,6 @@ def ingredientList_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT Stock.IngredientName, Quantity, Units, ExpirationDate FROM Stock, Ingredient WHERE Stock.IngredientName=Ingredient.IngredientName;")
     cursor.execute(squery)
-    cursor.commit()
     results = cursor.fetchall()
     rows = []
     for row in results:
@@ -139,7 +132,6 @@ def ingredient_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
     cursor.execute(squery)
-    cursor.commit()
     result = cursor.fetchall()
     return render_template('Ingredient.html', info=result[0])
 
