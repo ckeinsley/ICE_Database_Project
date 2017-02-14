@@ -82,6 +82,7 @@ def order_page():
     squery+=str(guestnumber)
     cursor.execute(squery)
     result = cursor.fetchall()
+    #TODO return the rest of the results and populate the rest of the information on the website
     return render_template('Order.html', orderInfo=result[0])
 
 
