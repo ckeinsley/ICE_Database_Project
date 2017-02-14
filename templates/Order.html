@@ -92,7 +92,7 @@
                     {% for recipe in orderInfo %}
                     <tr>
                         <td>
-                            <a class="recipe" href="Recipe" id="display-name">{{recipe[0]}}</a>
+                            <a class="recipe" href="Recipe?name={{recipe[0]}}" id="display-name">{{recipe[0]}}</a>
                         </td>
                         <td>{{recipe[2]}}</td>
                         <td><span id="display-quantity">{{recipe[1]}}</span></td>
