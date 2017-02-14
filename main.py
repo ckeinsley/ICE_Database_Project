@@ -41,6 +41,11 @@ def recipe_page():
     result1 = cursor.fetchall()
     return render_template('Recipe.html', recipe=result1[0])
 
+@APP.route('/insertrecipe', methods=['POST'])
+def add_recipe():
+    name=request.form['name']
+    print(name)
+
 #-----ORDERS------#
 
 
