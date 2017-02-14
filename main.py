@@ -106,9 +106,12 @@ def customer_page():
     username = request.args.get('user')
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
+    squery2 = ("SELECT * FROM [CHECK] WHERE Username=" + "'" + username + "'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
-    return render_template('Customer.html', customer=result1[0])
+    cursor.execute(squery2)
+    result2 = cursor.fetchall()
+    return render_template('Customer.html', customer=result1[0],hisorder=result2)
 
 #-------INGREDIENTS----------#
 
