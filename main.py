@@ -72,6 +72,7 @@ def order_page():
         sqlquer = "exec AddOrder " + str(guestnumber) + " , " + str(recipename) + " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
         results = cursor.fetchall()
+        CONNECTION.commit()
         return results
 
 
