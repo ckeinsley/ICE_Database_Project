@@ -77,7 +77,7 @@ def order_page():
     username = request.args.get('user', '')
     date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
-    squery = "Select Orders.GuestNumber, [Date/Time], TableNumber, Orders.Recipe, Quantity, (Price*Quantity) as Price " \
+    squery = "Select Orders.GuestNumber, [Date/Time], TableNumber, Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
             "From [Check], Orders, Recipe " \
             "Where [Check].GuestNumber = Orders.GuestNumber " \
             "And Orders.RecipeName = Recipe.RecipeName " \
