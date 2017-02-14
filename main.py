@@ -103,7 +103,7 @@ def order_page():
 @APP.route('/CustomerList')
 def customerList_page():
     cursor = CONNECTION.cursor()
-    squery = ("SELECT Username, Balance FROM Account")
+    squery = ("SELECT Username, Balance, FullName FROM Account")
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
