@@ -135,8 +135,9 @@ def ingredientList_page():
     if request.method == 'POST':
         nameOfIngredient = request.form.get('name', '')
         nutriInfo = request.form.get('nutrinfo')
+        unitsize = request.form.get('UnitSize')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddIngredient [" + str(nameOfIngredient) + "] , [" + str(nutriInfo) + "] , 0"
+        sqlquer = "exec AddIngredient [" + str(nameOfIngredient) + "] , [" + str(nutriInfo) + "] , [" + str(unitsize) + "]"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
