@@ -127,10 +127,10 @@ def customer_page():
     cursor.execute(squery2)
     result2 = cursor.fetchall()
     cursor.execute(squery3)
-    result3 = cursor.fetchall()
-    if result3 == None:
+    if cursor.rowcount == 0:
         temp = ['', "None"]
         return render_template('Customer.html', customer=result1[0],hisorder=result2,fav=temp)
+    result3 = cursor.fetchall()
     return render_template('Customer.html', customer=result1[0],hisorder=result2,fav=result3[0])
 
 #-------INGREDIENTS----------#
