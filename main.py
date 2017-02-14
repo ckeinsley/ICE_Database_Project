@@ -37,7 +37,7 @@ def recipe_page():
     cursor = CONNECTION.cursor()
     squery = "SELECT RecipeName, Description, NutritionalInfo, CookTime, PictureURL " \
             "FROM Recipe " \
-            "WHERE RecipeName = " + name
+            "WHERE RecipeName = '" + name + "'"
     return squery
     # cursor.execute(squery)
     # result = cursor.fetchone()
