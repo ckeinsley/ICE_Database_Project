@@ -35,11 +35,11 @@ def menu_page():
 def recipe_page():
     recipename = request.args.get('name')
     cursor = CONNECTION.cursor()
-    squery1 = ("SELECT* FROM Recipe WHERE RecipeName=" +
-               "'" + recipename + "'")
-    cursor.execute(squery1)
-    result1 = cursor.fetchall()
-    return render_template('Recipe.html', recipe=result1[0])
+    squery = "SELECT RecipeName, Description, NutritionalInfo, CookTime, PictureURL " \
+            "FROM Recipe WHERE RecipeName = " + recipename
+    cursor.execute(squery)
+    result = cursor.fetchone()
+    return render_template('Recipe.html', recipe=result[0])
 
 @APP.route('/insertrecipe', methods=['POST'])
 def add_recipe():
