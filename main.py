@@ -87,7 +87,7 @@ def order_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
-    if request.method == 'PUT':
+    elif request.method == 'PUT':
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
