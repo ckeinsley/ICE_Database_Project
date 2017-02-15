@@ -96,7 +96,6 @@ def order_page():
             (guestnumber) + "] , [" + str(recipename) + \
             "] , [" + str(quantity) + "] , '' "
         cursor.execute(sqlquer)
-        CONNECTION.commit()
 
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')
