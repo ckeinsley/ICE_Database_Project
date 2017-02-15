@@ -21,7 +21,6 @@ rh.mq.enableButtons = function() {
 			$("#change").attr("method","PUT");
 			$(this).html("Done");
 		}
-		rh.mq.hideNavbar();
 	});
 	// $("#add-quote").click(function(){
 	// 	$("#insert-quote-modal .modal-title").html("Add a MovieQuote");
