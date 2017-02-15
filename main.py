@@ -17,7 +17,7 @@ def hello_world():
 #-----------MENU----------------#
 
 
-@APP.route('/Menu',methods=['GET', 'POST','PUT'])
+@APP.route('/Menu',methods=['GET', 'POST'])
 def menu_page():
     method=request.form.get('_method')
     if request.method == 'POST':
@@ -77,7 +77,7 @@ def recipe_page():
 #-----ORDERS------#
 
 
-@APP.route('/OrderList')
+@APP.route('/OrderList',methods=['GET', 'POST'])
 def orderList_page():
     method=request.form.get('_method')
     if method == 'POST':
