@@ -90,10 +90,8 @@ def order_page():
 
     if method == 'PUT':
         guestnumber = request.args.get('guestnumber', '')
-        return("ttt")
         username = request.args.get('user', '')
         date = request.args.get('time', '')
-        return("test")
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
