@@ -31,7 +31,7 @@ def menu_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
             "["+str(recipename) + "] , " + price + \
-            " , " + time + " , [" + str(info) + "]," + rate + ",[" + str(img) + "] , '' "
+            " , " + time + " , [" + str(info) + "]," + rate + ",[ " + str(img) + " ] , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
