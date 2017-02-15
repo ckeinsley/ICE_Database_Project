@@ -74,7 +74,7 @@ def orderList_page():
     return render_template("OrderList.html", orderlist=rows)
 
 
-@APP.route('/Order', methods=['GET', 'POST'])
+@APP.route('/Order', methods=['GET', 'POST', 'PUT'])
 def order_page():
     if request.method == 'POST':
         guestnumber = request.args.get('guestnumber', '')
