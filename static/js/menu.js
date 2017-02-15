@@ -14,12 +14,12 @@ rh.mq.enableButtons = function() {
 		if (rh.mq.editing) {
 			rh.mq.editing = false;
 			$(".edit-actions").addClass("hidden");
-			$("#change").attr("method","POST");
+			$("#change").attr("value","POST");
 			$(this).html("Edit");
 		} else {
 			rh.mq.editing = true;
 			$(".edit-actions").removeClass("hidden");
-			$("#change").attr("method","PUT");
+			$("#change").attr("value","PUT");
 			$(this).html("Done");
 		}
 	});
