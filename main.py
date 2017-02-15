@@ -34,7 +34,7 @@ def menu_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
-        
+
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
     cursor.execute(squery)
@@ -82,6 +82,17 @@ def order_page():
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddOrder " + \
+            (guestnumber) + " , " + str(recipename) + \
+            " , " + str(quantity) + " , '' "
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+    
+    if request.method == 'PUT':
+        guestnumber = request.args.get('guestnumber', '')
+        recipename = request.form.get('name')
+        quantity = request.form.get('quantity')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec UpdateBuy " + \
             (guestnumber) + " , " + str(recipename) + \
             " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
