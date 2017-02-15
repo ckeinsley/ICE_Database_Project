@@ -83,6 +83,7 @@
                         <th>Recipe</th>
                         <th>Price</th>
                         <th>Quantity</th>
+                        <th class="hidden edit-actions">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -93,6 +94,16 @@
                         </td>
                         <td>{{recipe[2]}}</td>
                         <td>{{recipe[1]}}</td>
+                        <td class="hidden edit-actions">
+                            <button data-toggle="modal" data-target="#insert-recipe-modal"
+						type="button" class="edit-order btn btn-success">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button data-toggle="modal" data-target="#delete-order-modal"
+				        type="button" class="delete-order btn btn-danger">
+						    <span class="glyphicon glyphicon-remove"></span>
+				            </button>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
