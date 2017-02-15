@@ -89,6 +89,8 @@ def order_page():
 
     if request.method == 'PUT':
         guestnumber = request.args.get('guestnumber', '')
+        username = request.args.get('user', '')
+        date = request.args.get('time', '')
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
@@ -96,7 +98,22 @@ def order_page():
             (guestnumber) + "] , [" + str(recipename) + \
             "] , [" + str(quantity) + "] , '' "
         cursor.execute(sqlquer)
-        CONNECTION.commit()
+        squery = "Select Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
+            "From [Check], Orders, Recipe " \
+            "Where [Check].GuestNumber = Orders.GuestNumber " \
+            "And Orders.RecipeName = Recipe.RecipeName " \
+            "AND [Check].GuestNumber = " + guestnumber
+
+        squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber "  \
+            "From [Check], Orders " \
+            "Where [Check].GuestNumber = Orders.GuestNumber " \
+            "AND [Check].GuestNumber = " + guestnumber
+        cursor.execute(squery)
+        recipesOrdered = cursor.fetchall()
+
+        cursor.execute(squery2)
+        checkInfo = cursor.fetchone()
+        return render_template('Order.html', orderInfo=recipesOrdered, checkInfo=checkInfo)
 
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')
