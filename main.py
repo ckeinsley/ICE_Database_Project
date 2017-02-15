@@ -91,7 +91,7 @@ def order_page():
         guestnumber = request.args.get('guestnumber', '')
         username = request.args.get('user', '')
         date = request.args.get('time', '')
-        return(guestnumber+"test")
+        return("test")
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
@@ -103,7 +103,6 @@ def order_page():
 
     
     guestnumber = request.args.get('guestnumber', '')
-    return(guestnumber+"test")
     username = request.args.get('user', '')
     date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
