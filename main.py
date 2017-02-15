@@ -74,9 +74,10 @@ def orderList_page():
     return render_template("OrderList.html", orderlist=rows)
 
 
-@APP.route('/Order', methods=['GET', 'POST', 'PUT'])
+@APP.route('/Order', methods=['GET', 'POST'])
 def order_page():
-    if request.method == 'POST':
+    method=request.form.get('_method')
+    if method == 'POST':
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
@@ -87,7 +88,7 @@ def order_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
-    if request.method == 'PUT':
+    if method == 'PUT':
         guestnumber = request.args.get('guestnumber', '')
         return("ttt")
         username = request.args.get('user', '')
