@@ -37,14 +37,6 @@
             font-size: 2em;
         }
 
-        .info{
-            font-size: 2em;
-        }
-
-        .cook-time{
-            font-size: 2em;
-        }
-        
         .back-home {
             font-size: 2.2em;
             text-align: right;
@@ -61,31 +53,23 @@
         <hr>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-md-4">
                     <div class="img-container">
 
                     </div>
                 </div>
-                <div class="col-lg-8 col-md-4">
+                <div class="col-lg-8">
                     <div class="description">
                         <p>
                             {{recipe[1]}}
                         </p>
+                        <p>
+                            {{recipe[2]}}
+                        </p>
+                        <p>
+                            Estimate Cook Time: {{recipe[3]}}
+                        </p>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-4">
-                <div class="info">
-                    <p>
-                        {{recipe[2]}}
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-4">
-                <div class="cook-time">
-                    <p>
-                        Estimate Cook Time: {{recipe[3]}}
-                    </p>
                 </div>
             </div>
         </div>
