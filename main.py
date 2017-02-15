@@ -76,10 +76,8 @@ def orderList_page():
 
 @APP.route('/Order', methods=['GET', 'POST', 'PUT'])
 def order_page():
-    guestnumber = request.args.get('guestnumber', '')
-    username = request.args.get('user', '')
-    date = request.args.get('time', '')
     if request.method == 'POST':
+        guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
@@ -90,6 +88,7 @@ def order_page():
         CONNECTION.commit()
 
     if request.method == 'PUT':
+        guestnumber = request.args.get('guestnumber', '')
         username = request.args.get('user', '')
         date = request.args.get('time', '')
         recipename = request.form.get('name')
@@ -101,6 +100,9 @@ def order_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
  
+    guestnumber = request.args.get('guestnumber', '')
+    username = request.args.get('user', '')
+    date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
     squery = "Select Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
         "From [Check], Orders, Recipe " \
