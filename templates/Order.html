@@ -98,15 +98,17 @@
                             <a class="recipe" href="Recipe?name={{recipe[0]}}" id="display-name">{{recipe[0]}}</a>
                         </td>
                         <td>{{recipe[2]}}</td>
-                        <td><span id="display-quantity">{{recipe[1]}}</span></td>
-                         <td><button data-toggle="modal" data-target="#insert-recipe-modal"
-						type="button" class="edit-recipe btn btn-success hidden edit-actions">
+                        <td>{{recipe[1]}}</td>
+                        <td class="hidden edit-actions">
+                            <button data-toggle="modal" data-target="#insert-recipe-modal"
+						type="button" class="edit-recipe btn btn-success">
                             <span class="glyphicon glyphicon-pencil"></span>
                             </button>
                             <button data-toggle="modal" data-target="#delete-recipe-modal"
-				        type="button" class="delete-recipe btn btn-danger hidden edit-actions">
+				        type="button" class="delete-recipe btn btn-danger">
 						    <span class="glyphicon glyphicon-remove"></span>
-                            </button></td>
+                            </button>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
