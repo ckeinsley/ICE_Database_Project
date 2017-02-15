@@ -33,6 +33,8 @@ def menu_page():
             " , " + int(time) + " , " + str(info) + "," + int(rate) + "," + str(img) + " , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
+
+        
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
     cursor.execute(squery)
