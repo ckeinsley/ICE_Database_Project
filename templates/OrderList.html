@@ -124,7 +124,8 @@
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Create A New Order</h4>
                 </div>
-                <form1 action="/insertorder" method="POST" class="form-horizontal"
+                <form method="POST" class="form-horizontal"
+                <input id="change" type="hidden" name="_method" value="POST">
                       role="form">
                     <div class="modal-body">
                         <div class="form-group">
@@ -156,7 +157,7 @@
                             <button type="submit" class="btn btn-primary" href="OrderList.html" onclick="setinput();">Create Order</button>
                         </div>
                     </div>
-                </form1>
+                </form>
             </div>
         </div>
     </div>
@@ -172,7 +173,7 @@
 					</button>
 					<h4 class="modal-title">Delete Order</h4>
 				</div>
-				<form2 action="/deleteorder" method="POST" class="form" role="form">
+				<form action="/deleteorder" method="POST" class="form" role="form">
 					<div class="modal-body">
 						<div>Are you wish to delete this order?</div>
 					</div>
@@ -180,7 +181,7 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 						<button type="submit" class="btn btn-danger">Delete Order</button>
 					</div>
-				</form2>
+				</form>
 			</div>
 		</div>
 	</div>
