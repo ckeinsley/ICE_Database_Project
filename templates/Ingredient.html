@@ -32,7 +32,49 @@
             font-size: 2.2em;
             text-align: center;
         }
-
+        .ship-list-container {
+            width: 95%;
+            margin: auto;
+            font-size: 0.8em;
+        }
+        
+        .every-ship-list-container {
+            vertical-align: top;
+            width: 30%;
+            display: inline-block;
+            background-color: white;
+            height: 135px;
+            border: 2px solid black;
+            margin-top: 20px;
+            margin-left: 2%;
+            border-radius: 6px;
+        }
+        
+        .every-ship-list-container .panel-header {
+            background-color: #337AB7;
+            padding: 0 0 0 0;
+            font-size: 1.4em;
+            text-align: center;
+            height: 45px;
+            line-height: 45px;
+        }
+        
+        .panel-body {
+            margin-top: 1%;
+            font-size: 1.3em;
+            text-align: center;
+        }
+        
+        .every-ship-list-container .panel-header h1 {
+            margin-top: 0;
+            color: white;
+        }
+        
+        .every-ship-list-container .panel-body {
+            margin-top: 1%;
+            font-size: 1.2em;
+            text-align: center;
+        }
         .table-hover {
             border-style: solid;
             border-width: 3px;
@@ -52,8 +94,14 @@
             <h1>Introvert Cafe</h1>
             <h2>Team ICE</h2>
         </div>
-
-
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <a id="add-ship" data-toggle="modal" data-target="#insert-ship-modal" href="#">Add Shipment</a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right 2">
+                <a id="toggle-edit" href="#">Edit</a>
+            </ul>
+        </div>
         <div class="name-container">
             <h1 class="name">{{info[0]}}</h1>
         </div>
@@ -69,9 +117,97 @@
                     <td>{{info[1]}}</td>
                 </tr>
             </table>
+            <div class="ship-list-container">
+            {% for ship in serial %}
+            <div class="every-ship-list-container">
+                <div class="panel-header">
+                    <h1 class="shipno" id="display-name">Ship No.{{ship[0]}}
+                        <button data-toggle="modal" data-target="#insert-ship-modal" type="button" class="edit-ship btn btn-success hidden edit-actions">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        <button data-toggle="modal" data-target="#delete-ship-modal" type="button" class="delete-ship btn btn-danger hidden edit-actions">
+						    <span class="glyphicon glyphicon-remove"></span>
+				            </button>
+                    </h1>
+                </div>
+                <div class="panel-body">
+                        <div class="exp">Expiration: {{ship[2]}}</div>
+                        <div class="quantity">Quantity: {{ship[1]}}</div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="back-home">
+                <a href="Welcome">Main Page</a>
+            </div>
+        </div>
         </div>
         <div class="back-home">
             <a href="Welcome">Main Page</a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="insert-ship-modal" tabindex="-1" role="dialog" aria-labelledby="Add Shipment">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
+                </div>
+                <form id="change" method="POST" class="form-horizontal" role="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="shipno-input" class="col-sm-2 control-label">Shipment No:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="shipno-input" name="shipno" placeholder="Shipment Number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exp-input" class="col-sm-2 control-label">Expiration:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="exp-input" name="exp" placeholder="Expiration Date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity-input" class="col-sm-2 control-label">Quantity:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="quantity-input" name="quantity" placeholder="Quantity">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary" href="Ingredient.html">Add Shipment</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="delete-ship-modal" tabindex="-1" role="dialog" aria-labelledby="Delete Shipment">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+                    <h4 class="modal-title">Delete Shipment</h4>
+                </div>
+                <form2  method="POST" class="form" role="form">
+                    <div class="modal-body">
+                        <div>Are you wish to delete this shipment?</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete Shipment</button>
+                    </div>
+                </form2>
+            </div>
         </div>
     </div>
 </body>

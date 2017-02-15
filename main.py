@@ -184,10 +184,13 @@ def ingredientList_page():
 def ingredient_page():
     iname = request.args.get('name')
     cursor = CONNECTION.cursor()
-    squery = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
-    cursor.execute(squery)
-    result = cursor.fetchall()
-    return render_template('Ingredient.html', info=result[0])
+    squery1 = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
+    squery2 = ("SELECT * FROM Stock WHERE IngredientName=" + "'" + iname + "'")
+    cursor.execute(squery1)
+    result1 = cursor.fetchall()
+    cursor.execute(squery2)
+    result2 = cursor.fetchall()
+    return render_template('Ingredient.html', info=result1[0],serial=result2)
 
 if __name__ == "__main__":
     APP.run(host='0.0.0.0', port=8080, debug=True)
