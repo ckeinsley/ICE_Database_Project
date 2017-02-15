@@ -92,9 +92,9 @@ def order_page():
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec UpdateBuy " + \
-            (guestnumber) + " , " + str(recipename) + \
-            " , " + str(quantity) + " , '' "
+        sqlquer = "exec UpdateBuy [" + \
+            (guestnumber) + "] , [" + str(recipename) + \
+            "] , [" + str(quantity) + "] , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
