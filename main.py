@@ -30,8 +30,8 @@ def menu_page():
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
-            str(recipename) + " , " + price + \
-            " , " + time + " , " + str(info) + "," + rate + "," + str(img) + " , '' "
+            "["+str(recipename) + "] , " + price + \
+            " , " + time + " , [" + str(info) + "]," + rate + ",[" + str(img) + "] , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -84,8 +84,8 @@ def order_page():
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddOrder " + \
-            (guestnumber) + " , " + str(recipename) + \
-            " , " + str(quantity) + " , '' "
+            (guestnumber) + " , [" + str(recipename) + \
+            "], " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
