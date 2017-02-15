@@ -100,8 +100,10 @@ def order_page():
             "] , [" + str(quantity) + "] , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
- 
+
+    
     guestnumber = request.args.get('guestnumber', '')
+    return(guestnumber+"test")
     username = request.args.get('user', '')
     date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
