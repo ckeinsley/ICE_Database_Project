@@ -17,8 +17,22 @@ def hello_world():
 #-----------MENU----------------#
 
 
-@APP.route('/Menu')
+@APP.route('/Menu',methods=['GET', 'POST','PUT'])
 def menu_page():
+    if request.method == 'POST':
+        recipename = request.form1.get('name')
+        price = request.form.get('price')
+        time = request.form.get('time')
+        info = request.form.get('calorie')
+        des = request.form.get('description')
+        rate = request.form.get('rate')
+        img = request.form.get('img')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec AddRecipe " + \
+            str(recipename) + " , " + int(price) + \
+            " , " + int(time) + " , " + str(info) + "," + int(rate) + "," + str(img) + " , '' "
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
     cursor.execute(squery)
@@ -42,12 +56,6 @@ def recipe_page():
     result = cursor.fetchone()
     return render_template('Recipe.html', recipe=result)
 
-
-@APP.route('/insertrecipe', methods=['POST'])
-def add_recipe():
-    name = request.form1['name']
-    print(name)
-    return render_template('Menu.html')
 
 #-----ORDERS------#
 
@@ -76,6 +84,8 @@ def order_page():
             " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
+
+    
 
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')
