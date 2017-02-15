@@ -30,7 +30,8 @@ rh.mq.enableButtons = function() {
 	$(".edit-recipe").click(function(){
 		$("#insert-recipe-modal .modal-title").html("Edit a recipe");
 		$("#insert-recipe-modal button[type=submit]").html("Update Recipe");
-		var name=$(this).find(".name").html();
+		var name=$("#insert-recipe-modal #name-input").find(".name").html();
+		console.log(name+"test");
 		// var price=$(this).find(".price").html();
 		// var calorie=$(this).find(".calorie").html();
 		// var img=$(this).find(".img").html();
