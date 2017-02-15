@@ -91,11 +91,10 @@ def order_page():
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
-        en=3
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateBuy " + \
             (guestnumber) + " , " + str(recipename) + \
-            " , " + str(quantity) + " , " +en
+            " , " + str(quantity) + " , '' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
