@@ -27,7 +27,6 @@ rh.mq.enableButtons = function() {
 		$("#insert-order-modal .modal-title").html("Add a New Order");
 		$("#insert-order-modal button[type=submit]").html("Add Order");
 		
-		rh.mq.hideNavbar();
 	});
 	$(".edit-order").click(function(){
 		$("#insert-order-modal .modal-title").html("Edit an order");
