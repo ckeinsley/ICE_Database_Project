@@ -49,17 +49,21 @@ def menu_page():
         price = request.form.get('price')
         time = request.form.get('time')
         info = request.form.get('calorie')
+        sqlquer = ""
         if time is not None:
             defaulttime = time
+            sqlquer += "time not null " + time + " "
         if price is not None:
             defaultprice = price
+            sqlquer += "price not null " + price + " "
         des = request.form.get('description')
         rate = request.form.get('rate')
         if rate is not None:
             defaultrate = rate
+            sqlquer += "rate not null " + rate + " "
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec UpdateDish " + \
+        sqlquer += "exec UpdateDish " + \
             "'"+str(recipename) + "' , " + str(defaultprice) + \
             " , " + str(defaultrate) + " , '" + str(info) + "', '" + str(des) +"'," + str(defaulttime) + ", '" + str(img) + "'"
         return sqlquer
