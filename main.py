@@ -46,10 +46,8 @@ def menu_page():
         info = request.form.get('calorie')
         if (time is None) or (len(time) ==0):
             time = 0
-            return "time was nothing"
         if (price is None) or (len(time)==0):
             price = 0
-            return "price was nothing"
         des = request.form.get('description')
         rate = request.form.get('rate')
         img = request.form.get('img')
