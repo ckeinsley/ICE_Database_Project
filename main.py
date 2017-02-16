@@ -19,28 +19,19 @@ def hello_world():
 
 @APP.route('/Menu',methods=['GET', 'POST'])
 def menu_page():
-    defaulttime = 0
-    defaultprice = 0
-    defaultrate = 0
     method=request.form.get('_method')
     if method == 'POST':
         recipename = request.form.get('name')
         price = request.form.get('price')
         time = request.form.get('time')
-        if time is not None:
-            defaulttime = time
-        if price is not None:
-            defaultprice = price
         info = request.form.get('calorie')
         des = request.form.get('description')
         rate = request.form.get('rate')
-        if rate is not None:
-            defaultrate = rate
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
-            "'"+str(recipename) + "' , " + str(defaultprice) + \
-            " , " + str(defaulttime) + " , '" + str(info) + "', '" + str(des) +"'," + str(defaultrate) + ", '" + str(img) + "' "
+            "'"+str(recipename) + "' , " + str(price) + \
+            " , " + str(time) + " , '" + str(info) + "', '" + str(des) +"'," + str(rate) + ", '" + str(img) + "' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
@@ -48,8 +39,6 @@ def menu_page():
         recipename = request.form.get('name', ' ')
         price = request.form.get('price', ' ')
         time = request.form.get('time', ' ')
-        if(time == ' '):
-            return "BLAH BLAH BLAH"
         info = request.form.get('calorie', ' ')
         des = request.form.get('description', ' ')
         rate = request.form.get('rate', ' ')
