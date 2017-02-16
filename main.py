@@ -45,8 +45,8 @@ def menu_page():
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
-            "'"+str(recipename) + "' , " + price + \
-            " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
+            "'"+str(recipename) + "' , '" + price + \
+            "' , '" + time + "' , '" + str(info) + "', '" + str(des) +"', '" + rate + "', '" + str(img) + "'"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -88,6 +88,7 @@ def orderList_page():
         sqlquer = "exec AddCheck " + \
             (guestnumber) + " , [" + str(username) + \
             "], " + str(tablenumber)
+        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -143,7 +144,7 @@ def order_page():
 
     if method == 'DEL':
         guestnumber = request.args.get('guestnumber', '')
-        recipename = request.form.get('name')
+        recipename = request.get('entity_key')
         cursor = CONNECTION.cursor()
         sqlquer = "exec delBuy [" + \
             (guestnumber) + "] , [" + str(recipename) + "]"
