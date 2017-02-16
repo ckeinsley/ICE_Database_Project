@@ -126,7 +126,6 @@ def order_page():
         sqlquer = "exec AddOrder " + \
             (guestnumber) + " , [" + str(recipename) + \
             "], " + str(quantity) + " , '' "
-        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
