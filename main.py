@@ -106,7 +106,7 @@ def orderList_page():
     #     CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
-    squery = ("SELECT* FROM [Check]")
+    squery = ("SELECT* FROM [Check], Bill WHERE [Check].GuestNumber=Bill.Guest")
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
@@ -164,9 +164,9 @@ def order_page():
         "And Orders.RecipeName = Recipe.RecipeName " \
         "AND [Check].GuestNumber = " + guestnumber
 
-    squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber "  \
-        "From [Check], Orders " \
-        "Where [Check].GuestNumber = Orders.GuestNumber " \
+    squery2 = "Select Orders.GuestNumber, [Date/Time], TableNumber, Cost "  \
+        "From [Check], Orders, Bill " \
+        "Where [Check].GuestNumber = Orders.GuestNumber AND Orders.GuestNumber=Bill.Guest " \
         "AND [Check].GuestNumber = " + guestnumber
 
     cursor.execute(squery)
