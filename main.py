@@ -21,13 +21,13 @@ def hello_world():
 def menu_page():
     method=request.form.get('_method')
     if request.method == 'POST':
-        recipename = request.form.GET.get('name', '')
-        price = request.form.get.GET.get('price', '')
-        time = request.form.get.GET.get('time', 0)
-        info = request.form.get.GET.get('calorie', 0)
-        des = request.form.get.GET.get('description', '')
-        rate = request.form.get.GET.get('rate', 0)
-        img = request.form.get.GET.get('img', '')
+        recipename = request.form.get('name')
+        price = request.form.get('price')
+        time = request.form.get('time')
+        info = request.form.get('calorie')
+        des = request.form.get('description')
+        rate = request.form.get('rate')
+        img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
             "'"+str(recipename) + "' , " + price + \
