@@ -46,7 +46,7 @@ def menu_page():
         info = request.form.get('calorie')
         if time is None:
             time = 0
-        return "time was None"
+        # return "time was None"
         if price is None:
             price = 0
         des = request.form.get('description')
@@ -55,7 +55,7 @@ def menu_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , " + str(price) + \
-            " , " + str(time) + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
+            " , " + "0" + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
