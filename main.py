@@ -143,15 +143,15 @@ def order_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
-    if method == 'DELETE':
-        guestnumber = request.args.get('guestnumber', '')
-        recipename = request.form.get('getdelkey')
-        cursor = CONNECTION.cursor()
-        sqlquer = "exec delBuy [" + \
-            (guestnumber) + "] , [" + str(recipename) + "]"
-        return sqlquer
-        cursor.execute(sqlquer)
-        CONNECTION.commit()
+    # if method == 'DELETE':
+    #     guestnumber = request.args.get('guestnumber', '')
+    #     recipename = request.form.get('getdelkey')
+    #     cursor = CONNECTION.cursor()
+    #     sqlquer = "exec delBuy [" + \
+    #         (guestnumber) + "] , [" + str(recipename) + "]"
+    #     return sqlquer
+    #     cursor.execute(sqlquer)
+    #     CONNECTION.commit()
 
     
     guestnumber = request.args.get('guestnumber', '')
