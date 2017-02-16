@@ -225,14 +225,20 @@ def ingredientList_page():
         CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
-    squery = "SELECT Stock.IngredientName, Quantity, Units, ExpirationDate " \
-        "FROM Stock, Ingredient " \
-        "WHERE Stock.IngredientName=Ingredient.IngredientName;"
+    squery = "SELECT Stock.IngredientName, Quantity, Units, ExpirationDate, IngredientReadout.Stocked " \
+        "FROM Stock, Ingredient, IngredientReadout " \
+        "WHERE Stock.IngredientName=Ingredient.IngredientName AND Ingredient.IngredientName=IngredientReadout.IngredientName;"
+    # squery1 = "SELECT * FROM IngredientReadout"
     cursor.execute(squery)
     results = cursor.fetchall()
+    # cursor.execute(squery1)
+    # results1 = cursor.fetchall()
     rows = []
+    stockrow=[]
     for row in results:
         rows.append(row)
+    # for sr in results1:
+    #     stockrow.append(sr)
     return render_template('IngredientList.html', ingredientlist=rows)
 
 
