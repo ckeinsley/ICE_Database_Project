@@ -19,6 +19,8 @@ def hello_world():
 
 @APP.route('/Menu',methods=['GET', 'POST'])
 def menu_page():
+    time = 0
+    price = 0
     method=request.form.get('_method')
     if method == 'POST':
         recipename = request.form.get('name')
