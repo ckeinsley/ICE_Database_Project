@@ -50,15 +50,15 @@ def menu_page():
         time = request.form.get('time')
         info = request.form.get('calorie')
         sqlquer = ""
-        if time != None:
+        if not time:
             defaulttime = time
             sqlquer += "time not null " + time + " "
-        if price != None:
+        if not price:
             defaultprice = price
             sqlquer += "price not null " + price + " "
         des = request.form.get('description')
         rate = request.form.get('rate')
-        if rate != None:
+        if not rate:
             defaultrate = rate
             sqlquer += "rate not null " + rate + " "
         img = request.form.get('img')
