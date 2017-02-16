@@ -30,8 +30,8 @@ def menu_page():
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
-            "'"+str(recipename) + "' , " + str(price) + \
-            " , " + str(time) + " , '" + str(info) + "', '" + str(des) +"'," + str(rate) + ", '" + str(img) + "' "
+            "'"+str(recipename) + "' , " + price + \
+            " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
@@ -45,8 +45,8 @@ def menu_page():
         img = request.form.get('img', ' ')
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
-            "'"+str(recipename) + "' , " + str(price) + \
-            " , " + str(rate) + " , '" + str(info) + "', '" + str(des) +"'," + str(time) + ", '" + str(img) + "'"
+            "'"+str(recipename) + "' , " + price + \
+            " , " + rate + " , '" + str(info) + "', '" + str(des) +"'," + time + ", '" + str(img) + "'"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
