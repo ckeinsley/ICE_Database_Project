@@ -20,7 +20,7 @@ def hello_world():
 @APP.route('/Menu',methods=['GET', 'POST'])
 def menu_page():
     method=request.form.get('_method')
-    if request.method == 'POST':
+    if method == 'POST':
         recipename = request.form.get('name')
         price = request.form.get('price')
         time = request.form.get('time')
@@ -35,7 +35,7 @@ def menu_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
-    if request.method == 'PUT':
+    if method == 'PUT':
         recipename = request.form.get('name')
         price = request.form.get('price')
         time = request.form.get('time')
