@@ -48,6 +48,8 @@ def menu_page():
         recipename = request.form.get('name', ' ')
         price = request.form.get('price', ' ')
         time = request.form.get('time', ' ')
+        if(time == ' '):
+            return "BLAH BLAH BLAH"
         info = request.form.get('calorie', ' ')
         des = request.form.get('description', ' ')
         rate = request.form.get('rate', ' ')
