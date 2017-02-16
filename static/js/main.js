@@ -26,7 +26,7 @@ rh.mq.enableButtons = function() {
 
 	$('.delete-order').click(function(){
 		rh.mq.deleting=true;
-		$("#del").attr("value","DEL");
+		$("#del").attr("value","DELETE");
 		$("#change").attr("value","NOT");
 		var entityKey=$(this).find(".entity_key").html();
 		console.log("entity_key ="+entityKey);
@@ -34,8 +34,8 @@ rh.mq.enableButtons = function() {
 
 	$('.revert-del').click(function(){
 		rh.mq.deleting=false;
-		rh.mq.editing=true;
 		$("#del").attr("value","POST");
+		$("#change").attr("value","PUT");
 	});
 	// $("#add-quote").click(function(){
 	// 	$("#insert-quote-modal .modal-title").html("Add a MovieQuote");

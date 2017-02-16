@@ -118,7 +118,6 @@ def orderList_page():
 @APP.route('/Order', methods=['GET', 'POST'])
 def order_page():
     method=request.form.get('_method')
-    dele=request.form.get('_method1')
     if method == 'POST':
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('name')
@@ -144,7 +143,7 @@ def order_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
-    if dele == 'DEL':
+    if method == 'DELETE':
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.get('entity_key')
         cursor = CONNECTION.cursor()
