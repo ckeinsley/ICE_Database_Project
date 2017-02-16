@@ -28,12 +28,13 @@ def menu_page():
         des = request.form.get('description')
         rate = request.form.get('rate')
         img = request.form.get('img')
-        cursor = CONNECTION.cursor()
+        # cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
             "["+str(recipename) + "] , " + price + \
             " , " + time + " , [" + str(info) + "], [" + str(des) +"]," + rate + ",[ " + str(img) + " ] "
-        cursor.execute(sqlquer)
-        CONNECTION.commit()
+        return sqlquer
+        # cursor.execute(sqlquer)
+        # CONNECTION.commit()
     
     if request.method == 'PUT':
         recipename = request.form.get('name')
@@ -43,13 +44,13 @@ def menu_page():
         des = request.form.get('description')
         rate = request.form.get('rate')
         img = request.form.get('img')
-        cursor = CONNECTION.cursor()
+        # cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , " + price + \
             " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
         return sqlquer
-        cursor.execute(sqlquer)
-        CONNECTION.commit()
+        # cursor.execute(sqlquer)
+        # CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
