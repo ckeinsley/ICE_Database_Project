@@ -35,7 +35,6 @@ rh.mq.enableButtons = function() {
 	$('.revert-del').click(function(){
 		rh.mq.deleting=false;
 		$("#del").attr("value","POST");
-		$("#change").attr("value","POST");
 	});
 	// $("#add-quote").click(function(){
 	// 	$("#insert-quote-modal .modal-title").html("Add a MovieQuote");
