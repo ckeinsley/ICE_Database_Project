@@ -24,6 +24,10 @@ def menu_page():
         recipename = request.form.get('name')
         price = request.form.get('price')
         time = request.form.get('time')
+        if time is None:
+            time = 0
+        if price is None:
+            price = 0
         info = request.form.get('calorie')
         des = request.form.get('description')
         rate = request.form.get('rate')
@@ -40,6 +44,10 @@ def menu_page():
         price = request.form.get('price')
         time = request.form.get('time')
         info = request.form.get('calorie')
+        if time is None:
+            time = 0
+        if price is None:
+            price = 0
         des = request.form.get('description')
         rate = request.form.get('rate')
         img = request.form.get('img')
