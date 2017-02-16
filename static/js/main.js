@@ -34,6 +34,7 @@ rh.mq.enableButtons = function() {
 
 	$('.revert-del').click(function(){
 		rh.mq.deleting=false;
+		rh.mq.editing=true;
 		$("#del").attr("value","POST");
 	});
 	// $("#add-quote").click(function(){
