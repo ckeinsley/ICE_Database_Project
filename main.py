@@ -42,6 +42,7 @@ def menu_page():
         info = request.form.get('calorie')
         des = request.form.get('description')
         rate = request.form.get('rate')
+        return rate + "Hello"
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
