@@ -146,10 +146,10 @@ def order_page():
     if method == 'DELETE':
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('getdelkey')
-        return guestnumber
         cursor = CONNECTION.cursor()
         sqlquer = "exec delBuy [" + \
             (guestnumber) + "] , [" + str(recipename) + "]"
+        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
