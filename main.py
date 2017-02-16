@@ -46,7 +46,7 @@ def menu_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , " + price + \
-            " , " + rate + " , '" + str(info) + "', '" + str(des) +"'," + time + ", '" + str(img) + "'"
+            " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
