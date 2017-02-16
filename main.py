@@ -21,20 +21,19 @@ def hello_world():
 def menu_page():
     method=request.form.get('_method')
     if request.method == 'POST':
-        recipename = request.form.get('name')
-        price = request.form.get('price')
-        time = request.form.get('time')
-        info = request.form.get('calorie')
-        des = request.form.get('description')
-        rate = request.form.get('rate')
-        img = request.form.get('img')
-        # cursor = CONNECTION.cursor()
+        recipename = request.form.GET.get('name', '')
+        price = request.form.get.GET.get('price', '')
+        time = request.form.get.GET.get('time', 0)
+        info = request.form.get.GET.get('calorie', 0)
+        des = request.form.get.GET.get('description', '')
+        rate = request.form.get.GET.get('rate', 0)
+        img = request.form.get.GET.get('img', '')
+        cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
-            "["+str(recipename) + "] , " + price + \
-            " , " + time + " , [" + str(info) + "], [" + str(des) +"]," + rate + ",[ " + str(img) + " ] "
-        return sqlquer
-        # cursor.execute(sqlquer)
-        # CONNECTION.commit()
+            "'"+str(recipename) + "' , " + price + \
+            " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
     
     if request.method == 'PUT':
         recipename = request.form.get('name')
@@ -44,13 +43,12 @@ def menu_page():
         des = request.form.get('description')
         rate = request.form.get('rate')
         img = request.form.get('img')
-        # cursor = CONNECTION.cursor()
+        cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , " + price + \
             " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
-        return sqlquer
-        # cursor.execute(sqlquer)
-        # CONNECTION.commit()
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
