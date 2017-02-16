@@ -197,7 +197,7 @@ def customer_page():
     username = request.args.get('user')
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
-    squery2 = ("SELECT * FROM [CHECK] WHERE Username=" + "'" + username + "'")
+    squery2 = ("SELECT * FROM [CHECK], Bill WHERE [Check].GuestNumber=Bill.Guest AND Username=" + "'" + username + "'")
     squery3 = ("SELECT * FROM Favorite WHERE Username=" + "'" + username + "'")
     cursor.execute(squery1)
     result1 = cursor.fetchall()
