@@ -36,13 +36,13 @@ def menu_page():
         CONNECTION.commit()
     
     if method == 'PUT':
-        recipename = request.form.get('name', ' ')
-        price = request.form.get('price', ' ')
-        time = request.form.get('time', ' ')
-        info = request.form.get('calorie', ' ')
-        des = request.form.get('description', ' ')
-        rate = request.form.get('rate', ' ')
-        img = request.form.get('img', ' ')
+        recipename = request.form.get('name')
+        price = request.form.get('price')
+        time = request.form.get('time')
+        info = request.form.get('calorie')
+        des = request.form.get('description')
+        rate = request.form.get('rate')
+        img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , " + price + \
