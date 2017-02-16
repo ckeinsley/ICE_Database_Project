@@ -141,6 +141,15 @@ def order_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
+    if method == 'DEL':
+        guestnumber = request.args.get('guestnumber', '')
+        recipename = request.form.get('name')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec delBuy [" + \
+            (guestnumber) + "] , [" + str(recipename) + "]"
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
     
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')

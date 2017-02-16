@@ -4,6 +4,7 @@ rh.mq = rh.mq || {}
 
 /** Tracks the editing state */
 rh.mq.editing = false
+rh.mq.deleting=false
 
 rh.mq.enableButtons = function() {
 	// $('#add-quote-modal').on('show.bs.modal',function(){
@@ -21,6 +22,18 @@ rh.mq.enableButtons = function() {
 			$("#change").attr("value","PUT");
 			$(this).html("Done");
 		}
+	});
+
+	$('.delete-order').click(function(){
+		rh.mq.deleting=true;
+		$("#del").attr("value","DEL");
+		var entityKey=$(this).find(".entity_key").html();
+		console.log("entity_key ="+entityKey);
+	});
+
+	$('.revert-del').click(function(){
+		rh.mq.deleting=false;
+		$("#del").attr("value","POST");
 	});
 	// $("#add-quote").click(function(){
 	// 	$("#insert-quote-modal .modal-title").html("Add a MovieQuote");

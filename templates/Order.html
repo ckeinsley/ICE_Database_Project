@@ -102,6 +102,7 @@
                             <button data-toggle="modal" data-target="#delete-order-modal"
 				        type="button" class="delete-order btn btn-danger">
 						    <span class="glyphicon glyphicon-remove"></span>
+                            <div class="hidden entity_key">{{recipe[0]}}</div>
 				            </button>
                         </td>
                     </tr>
@@ -163,12 +164,13 @@
 					<h4 class="modal-title">Delete Order</h4>
 				</div>
 				<form method="POST" class="form" role="form">
+                    <input id="del" type="hidden" name="_method" value="POST">
 					<div class="modal-body">
 						<div>Are you wish to delete this order?</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-						<button type="submit" class="btn btn-danger">Delete Order</button>
+						<button type="button" class="revert-del btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="revert-del btn btn-danger">Delete Order</button>
 					</div>
 				</form>
 			</div>
