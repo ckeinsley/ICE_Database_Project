@@ -53,8 +53,8 @@ def menu_page():
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
-            "'"+str(recipename) + "' , " + price + \
-            " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
+            "'"+str(recipename) + "' , " + str(price) + \
+            " , " + str(time) + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
