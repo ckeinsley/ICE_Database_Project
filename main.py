@@ -225,7 +225,7 @@ def ingredientList_page():
         CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
-    squery = "SELECT Stock.IngredientName, Quantity, Units, ExpirationDate, IngredientReadout.Stocked " \
+    squery = "SELECT Stock.IngredientName, IngredientReadout.Stocked, Units" \
         "FROM Stock, Ingredient, IngredientReadout " \
         "WHERE Stock.IngredientName=Ingredient.IngredientName AND Ingredient.IngredientName=IngredientReadout.IngredientName;"
     # squery1 = "SELECT * FROM IngredientReadout"
