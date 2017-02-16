@@ -28,8 +28,7 @@ rh.mq.enableButtons = function() {
 		rh.mq.deleting=true;
 		$("#del").attr("value","DELETE");
 		$("#change").attr("value","NOT");
-		var entityKey=$(this).find(".entity_key").html();
-		console.log("entity_key ="+entityKey);
+		console.log("entity_key =");
 	});
 
 	$('.revert-del').click(function(){
