@@ -46,7 +46,7 @@ def menu_page():
         info = request.form.get('calorie')
         if time is None:
             time = 0
-        # return "time was None"
+        return str(time) + "Helloooooooo"
         if price is None:
             price = 0
         des = request.form.get('description')
