@@ -19,28 +19,28 @@ def hello_world():
 
 @APP.route('/Menu',methods=['GET', 'POST'])
 def menu_page():
-    time = 0
-    price = 0
-    rate = 0
+    defaulttime = 0
+    defaultprice = 0
+    defaultrate = 0
     method=request.form.get('_method')
     if method == 'POST':
         recipename = request.form.get('name')
         price = request.form.get('price')
         time = request.form.get('time')
-        if time is None:
-            time = 0
-        if price is None:
-            price = 0
+        if time is not None:
+            defaulttime = time
+        if price is not None:
+            defaultprice = price
         info = request.form.get('calorie')
         des = request.form.get('description')
         rate = request.form.get('rate')
-        if rate is None:
-            rate = 0
+        if rate is not None:
+            defaultrate = rate
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
-            "'"+str(recipename) + "' , " + price + \
-            " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
+            "'"+str(recipename) + "' , " + str(defaultprice) + \
+            " , " + str(defaulttime) + " , '" + str(info) + "', '" + str(des) +"'," + str(defaultrate) + ", '" + str(img) + "' "
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
@@ -50,20 +50,20 @@ def menu_page():
         time = request.form.get('time')
         info = request.form.get('calorie')
         if time is None:
-            time = 0
+            defaulttime = time
         if price is None:
-            price = 0
+            defaultprice = price
         des = request.form.get('description')
         rate = request.form.get('rate')
         if rate is None:
-            rate = 0
+            defaultrate = rate
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
-            "'"+str(recipename) + "' , " + str(price) + \
-            " , " + str(rate) + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
+            "'"+str(recipename) + "' , " + str(defaultprice) + \
+            " , " + str(defaultrate) + " , '" + str(info) + "', '" + str(des) +"'," + str(defaulttime) + ", '" + str(img) + "'"
         return sqlquer
-        ursor.execute(sqlquer)
+        cursor.execute(sqlquer)
         CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
