@@ -49,13 +49,13 @@ def menu_page():
         price = request.form.get('price')
         time = request.form.get('time')
         info = request.form.get('calorie')
-        if time is None:
+        if time is not None:
             defaulttime = time
-        if price is None:
+        if price is not None:
             defaultprice = price
         des = request.form.get('description')
         rate = request.form.get('rate')
-        if rate is None:
+        if rate is not None:
             defaultrate = rate
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
