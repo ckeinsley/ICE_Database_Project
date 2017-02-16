@@ -21,6 +21,7 @@ def hello_world():
 def menu_page():
     time = 0
     price = 0
+    rate = 0
     method=request.form.get('_method')
     if method == 'POST':
         recipename = request.form.get('name')
@@ -33,6 +34,8 @@ def menu_page():
         info = request.form.get('calorie')
         des = request.form.get('description')
         rate = request.form.get('rate')
+        if rate is None:
+            rate = 0
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
@@ -47,18 +50,18 @@ def menu_page():
         time = request.form.get('time')
         info = request.form.get('calorie')
         if time is None:
-            time = 10000
-            return str(time) + "Helloooooooo" + str(time)
+            time = 0
         if price is None:
             price = 0
         des = request.form.get('description')
         rate = request.form.get('rate')
+        if rate is None:
+            rate = 0
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , " + str(price) + \
-            " , " + "0" + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
-        return sqlquer
+            " , " + str(rate) + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "'"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
