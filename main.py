@@ -35,7 +35,6 @@ def menu_page():
             "'"+str(recipename) + "' , " + price + \
             " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
         sqlquer = remove_sql_comments(sqlquer)
-        # return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
@@ -51,11 +50,13 @@ def menu_page():
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , '" + price + \
             "' , '" + time + "' , '" + str(info) + "', '" + str(des) +"', '" + rate + "', '" + str(img) + "'"
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
+    squery = remove_sql_comments(squery)
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
@@ -73,6 +74,7 @@ def recipe_page():
     squery = "SELECT RecipeName, Description, NutritionalInfo, CookTime, PictureURL " \
         "FROM Recipe " \
         "WHERE RecipeName = '" + name + "'"
+    squery = remove_sql_comments(squery)
     cursor.execute(squery)
     result = cursor.fetchone()
     return render_template('Recipe.html', recipe=result)
@@ -92,7 +94,7 @@ def orderList_page():
         sqlquer = "exec AddCheck " + \
             (guestnumber) + " , [" + str(username) + \
             "], " + str(tablenumber)
-        return sqlquer
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -111,6 +113,7 @@ def orderList_page():
 
     cursor = CONNECTION.cursor()
     squery = ("SELECT* FROM [Check], Bill WHERE [Check].GuestNumber=Bill.Guest")
+    squery = remove_sql_comments(squery)
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
@@ -130,6 +133,7 @@ def order_page():
         sqlquer = "exec AddOrder " + \
             (guestnumber) + " , [" + str(recipename) + \
             "], " + str(quantity) + " , '' "
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -143,6 +147,7 @@ def order_page():
         sqlquer = "exec UpdateBuy [" + \
             (guestnumber) + "] , [" + str(recipename) + \
             "] , [" + str(quantity) + "] , '' "
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -171,6 +176,9 @@ def order_page():
         "From [Check], Orders, Bill " \
         "Where [Check].GuestNumber = Orders.GuestNumber AND Orders.GuestNumber=Bill.Guest " \
         "AND [Check].GuestNumber = " + guestnumber
+    
+    squery = remove_sql_comments(squery)
+    squery2 = remove_sql_comments(squery2)
 
     cursor.execute(squery)
     recipesOrdered = cursor.fetchall()
@@ -187,6 +195,7 @@ def order_page():
 def customerList_page():
     cursor = CONNECTION.cursor()
     squery = ("SELECT Username, Balance, FullName FROM Account")
+    squery = remove_sql_comments(squery)
     cursor.execute(squery)
     results = cursor.fetchall()
     rows = []
@@ -202,6 +211,11 @@ def customer_page():
     squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
     squery2 = ("SELECT * FROM [CHECK], Bill WHERE [Check].GuestNumber=Bill.Guest AND Username=" + "'" + username + "'")
     squery3 = ("SELECT * FROM Favorite WHERE Username=" + "'" + username + "'")
+
+    squery1 = remove_sql_comments(squery1)
+    squery2 = remove_sql_comments(squery2)
+    squery3 = remove_sql_comments(squery3)
+
     cursor.execute(squery1)
     result1 = cursor.fetchall()
     cursor.execute(squery2)
@@ -224,6 +238,7 @@ def ingredientList_page():
         unitsize = request.form.get('UnitSize')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddIngredient [" + str(nameOfIngredient) + "] , [" + str(nutriInfo) + "] , [" + str(unitsize) + "]"
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -231,6 +246,7 @@ def ingredientList_page():
     squery = "SELECT Ingredient.IngredientName, IngredientReadout.Stocked, Units " \
         "FROM Ingredient, IngredientReadout " \
         "WHERE Ingredient.IngredientName=IngredientReadout.IngredientName;"
+    squery = remove_sql_comments(squery)
     # squery1 = "SELECT * FROM IngredientReadout"
     cursor.execute(squery)
     results = cursor.fetchall()
@@ -251,6 +267,8 @@ def ingredient_page():
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
     squery2 = ("SELECT * FROM Stock WHERE IngredientName=" + "'" + iname + "'")
+    squery = remove_sql_comments(squery)
+    squery2 = remove_sql_comments(squery2)
     cursor.execute(squery1)
     result1 = cursor.fetchall()
     cursor.execute(squery2)
