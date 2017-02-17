@@ -35,7 +35,6 @@ def menu_page():
             "'"+str(recipename) + "' , " + price + \
             " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
         sqlquer = remove_sql_comments(sqlquer)
-        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
