@@ -8,6 +8,8 @@ APP = Flask(__name__)
 CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulman.edu;'
                               'Database=ICE_Project; Uid=introvertGuest; Pwd=introvertPassword')
 
+def remove_sql_comments(toRemove):
+    return toRemove.replace("--", "-\-")
 
 @APP.route('/')
 @APP.route('/Welcome')
@@ -32,6 +34,7 @@ def menu_page():
         sqlquer = "exec AddRecipe " + \
             "'"+str(recipename) + "' , " + price + \
             " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
+        sqlquer = remove_sql_comments(sqlquer)
         # return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
