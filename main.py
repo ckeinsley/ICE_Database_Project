@@ -32,7 +32,7 @@ def menu_page():
         sqlquer = "exec AddRecipe " + \
             "'"+str(recipename) + "' , " + price + \
             " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
-        return sqlquer
+        # return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
     
