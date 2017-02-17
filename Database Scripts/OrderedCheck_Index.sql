@@ -1,0 +1,11 @@
+USE [ICE_Project]
+GO
+
+/****** Object:  Index [OrderedCheck]    Script Date: 2/16/2017 7:40:21 PM ******/
+CREATE NONCLUSTERED INDEX [OrderedCheck] ON [dbo].[Check]
+(
+	[Username] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 75) ON [PRIMARY]
+GO
+
+
