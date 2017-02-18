@@ -9,9 +9,9 @@ CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulma
                               'Database=ICE_Project; Uid=introvertGuest; Pwd=introvertPassword')
 
 def remove_sql_comments(toRemove):
-    toRemove = toRemove.replace("--", " ")
-    toRemove = toRemove.replace("/*", " ")
-    return toRemove
+    output = toRemove.replace("--", " ")
+    output = output.replace("/*", " ")
+    return output.strip()
 
 @APP.route('/')
 @APP.route('/Welcome')
@@ -34,8 +34,8 @@ def menu_page():
         img = request.form.get('img')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
-            "'"+str(recipename) + "' , " + price + \
-            " , " + time + " , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
+            "'"+str(recipename) + "' , '" + price + \
+            "' , '" + time + "' , '" + str(info) + "', '" + str(des) +"'," + rate + ", '" + str(img) + "' "
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
@@ -59,7 +59,7 @@ def menu_page():
     if method == 'DELETE':
         recipename = request.form.get('delname')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec delDish [" + recipename + "]"
+        sqlquer = "exec delDish '" + recipename + "'"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
