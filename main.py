@@ -308,7 +308,7 @@ def ingredientList_page():
         CONNECTION.commit()
 
     if method == 'DELETE':
-        nameofingredient = clean_user_input(request.form.get('name', ''))
+        nameofingredient = clean_user_input(request.form.get('delname', ''))
         sqlquer = "exec delPart '" + str(nameofingredient) + "'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor = CONNECTION.cursor()
