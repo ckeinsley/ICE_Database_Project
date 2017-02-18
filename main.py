@@ -92,27 +92,38 @@ def orderList_page():
         username = request.form.get('username')
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddCheck " + \
-            (guestnumber) + " , [" + str(username) + \
-            "], " + str(tablenumber)
+            str(guestnumber) + " , '', '" + str(username) + \
+            "', " + str(tablenumber)
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
-    # if method == 'PUT':
-    #     guestnumber = request.args.get('guestnumber', '')
-    #     username = request.args.get('user', '')
-    #     date = request.args.get('time', '')
-    #     recipename = request.form.get('name')
-    #     quantity = request.form.get('quantity')
-    #     cursor = CONNECTION.cursor()
-    #     sqlquer = "exec UpdateBuy [" + \
-    #         (guestnumber) + "] , [" + str(recipename) + \
-    #         "] , [" + str(quantity) + "] , '' "
-    #     cursor.execute(sqlquer)
-    #     CONNECTION.commit()
+    if method == 'PUT':
+        guestnumber = request.form.get('guest')
+        tablenumber = request.form.get('table')
+        username = request.form.get('username')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec UpdateBill " + \
+            str(guestnumber) + " , '', '" + str(username) + \
+            "', " + str(tablenumber)
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
+    if method == 'DELETE':
+        guestnumber = request.form.get('guest')
+        tablenumber = request.form.get('table')
+        username = request.form.get('username')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec delBill " + \
+            str(guestnumber) + " , '', '" + str(username) + \
+            "', " + str(tablenumber)
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
-    squery = ("SELECT* FROM [Check], Bill WHERE [Check].GuestNumber=Bill.Guest")
+    squery = ("SELECT * FROM [Check], Bill WHERE [Check].GuestNumber=Bill.Guest")
     squery = remove_sql_comments(squery)
     cursor.execute(squery)
     results = cursor.fetchall()
