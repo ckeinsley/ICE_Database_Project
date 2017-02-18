@@ -213,7 +213,7 @@ def customerList_page():
         password = request.form.get('password')
         balance = request.form.get('balance')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddOAccount [" + \
+        sqlquer = "exec AddAccount [" + \
             str(username) + "] , [" + str(password) + \
             "], " + balance + " , [" + str(name) +"]"
         sqlquer = remove_sql_comments(sqlquer)
