@@ -95,7 +95,6 @@ def orderList_page():
             str(guestnumber) + " , '', '" + str(username) + \
             "', " + str(tablenumber)
         sqlquer = remove_sql_comments(sqlquer)
-        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
 

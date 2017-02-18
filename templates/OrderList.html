@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,142 +16,140 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/orderlist.js" type="text/javascript" charset="utf-8"></script>
     <style>
-        .title-container{
-            text-align:center;
+        .title-container {
+            text-align: center;
         }
+        
         .order-list-container {
-	        width: 95%;
-	        margin: auto;
-	        font-size: 0.8em;
+            width: 95%;
+            margin: auto;
+            font-size: 0.8em;
         }
+        
         .every-order-list-container {
-	        vertical-align: top;
-	        width: 30%;
-	        display: inline-block;
-	        background-color: white;
-	        height: 135px;
-	        border: 2px solid black;
-	        margin-top: 20px;
-	        margin-left: 2%;
-	        border-radius: 6px;
+            vertical-align: top;
+            width: 30%;
+            display: inline-block;
+            background-color: white;
+            height: 135px;
+            border: 2px solid black;
+            margin-top: 20px;
+            margin-left: 2%;
+            border-radius: 6px;
         }
+        
         .every-order-list-container .panel-header {
-	        background-color: #337AB7;
-	        padding: 0 0 0 0;
-	        font-size: 1em;
-	        text-align:center;
-	        height: 40px;
-	        line-height: 40px;
+            background-color: #337AB7;
+            padding: 0 0 0 0;
+            font-size: 1em;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
         }
+        
         .panel-body {
             margin-top: 1.9%;
-	        font-size: 1.3em;
-	        text-align:center;
+            font-size: 1.3em;
+            text-align: center;
         }
+        
         .every-order-list-container .panel-header h1 {
-	        margin-top: 0;
-	        color: white;
+            margin-top: 0;
+            color: white;
         }
-        .every-order-list-container .panel-body > div {
-	        margin-top: 1%;
-	        font-size: 1.3em;
-	        text-align:center;
+        
+        .every-order-list-container .panel-body>div {
+            margin-top: 1%;
+            font-size: 1.3em;
+            text-align: center;
         }
-        .back-home{
+        
+        .back-home {
             font-size: 2.2em;
-            text-align:right;
+            text-align: right;
             padding-top: 0;
         }
-
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="title-container">
             <h1>Order List</h1>
         </div>
-        
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                        <a id="add-order" data-toggle="modal"
-                        data-target="#insert-order-modal" href="#">New Order</a>
-                </ul>
-                <ul class="nav navbar-nav navbar-right 2">
-                        <a id="toggle-edit" href="#">Edit</a>
-                </ul>   
-            </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <a id="add-order" data-toggle="modal" data-target="#insert-order-modal" href="#">New Order</a>
+            </ul>
+            <ul class="nav navbar-nav navbar-right 2">
+                <a id="toggle-edit" href="#">Edit</a>
+            </ul>
+        </div>
 
         <div class="order-list-container">
             {% for order in orderlist %}
-            
-                <div class="every-order-list-container">
-                    <div class="panel-header">
-                        <h1 class="table-number" id="display-table">Table: {{order[3]}}
-                            <button data-toggle="modal" data-target="#insert-order-modal"
-						type="button" class="edit-order btn btn-success hidden edit-actions">
+
+            <div class="every-order-list-container">
+                <div class="panel-header">
+                    <h1 class="table-number" id="display-table">Table: {{order[3]}}
+                        <button data-toggle="modal" data-target="#insert-order-modal" type="button" class="edit-order btn btn-success hidden edit-actions">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </button>
-                            <button data-toggle="modal" data-target="#delete-order-modal"
-				        type="button" class="delete-order btn btn-danger hidden edit-actions">
+                        <button data-toggle="modal" data-target="#delete-order-modal" type="button" class="delete-order btn btn-danger hidden edit-actions">
 						        <span class="glyphicon glyphicon-remove"></span>
 				             </button>
-                        </h1>
-                    </div>
-                    <div class="panel-body">
-                        <a href="Order?user={{order[2]}}&time={{order[1]}}&guestnumber={{order[0]}}">
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    <a href="Order?user={{order[2]}}&time={{order[1]}}&guestnumber={{order[0]}}">
                         <div class="guest-number" id="display-guest">Guest No:{{order[0]}}</div>
                         <div class="date">{{order[1]}}</div>
                         <div class="check">Total: ${{order[5]}}</div>
-                        </a>
-                    </div>
+                    </a>
                 </div>
-           
+            </div>
+
             {% endfor %}
         </div>
-         <div class="back-home">
-                <a href="Welcome">Main Page</a>
+        <div class="back-home">
+            <a href="Welcome">Main Page</a>
         </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="insert-order-modal" tabindex="-1"
-         role="dialog" aria-labelledby="New Order">
+    <div class="modal fade" id="insert-order-modal" tabindex="-1" role="dialog" aria-labelledby="New Order">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title" id="myModalLabel">Create A New Order</h4>
                 </div>
-                <form method="POST" class="form-horizontal"
-                <input id="change" type="hidden" name="_method" value="POST">
+                <form method="POST" class="form-horizontal" role="form">
+                    <input id="change" type="hidden" name="_method" value="POST">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="table-input" class="col-sm-2 control-label">Table No:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="table-input"
-                                       name="table" placeholder="Table Number">
+                                <input type="text" class="form-control" id="table-input" name="table" placeholder="Table Number">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="guest-input" class="col-sm-2 control-label">Guest No:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="guest-input"
-                                       name="guest" placeholder="Guest Number">
+                                <input type="text" class="form-control" id="guest-input" name="guest" placeholder="Guest Number">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="username-input" class="col-sm-2 control-label">Username:</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="username-input"
-                                       name="username" placeholder="Username">
+                                <input type="text" class="form-control" id="username-input" name="username" placeholder="Username">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default"
-                                    data-dismiss="modal">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
                                 Cancel
                             </button>
                             <button type="submit" class="btn btn-primary" href="OrderList.html">Create Order</button>
@@ -162,27 +161,27 @@
     </div>
 
     <!-- Modal -->
-	<div class="modal fade" id="delete-order-modal" tabindex="-1"
-		role="dialog" aria-labelledby="Delete Order">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
+    <div class="modal fade" id="delete-order-modal" tabindex="-1" role="dialog" aria-labelledby="Delete Order">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">Delete Order</h4>
-				</div>
-				<form action="/deleteorder" method="POST" class="form" role="form">
-					<div class="modal-body">
-						<div>Are you wish to delete this order?</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-						<button type="submit" class="btn btn-danger">Delete Order</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                    <h4 class="modal-title">Delete Order</h4>
+                </div>
+                <form action="/deleteorder" method="POST" class="form" role="form">
+                    <div class="modal-body">
+                        <div>Are you wish to delete this order?</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
