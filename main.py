@@ -146,7 +146,7 @@ def orderList_page():
 def order_page():
     method = request.form.get('_method')
     if method == 'POST':
-        guestnumber = request.args.get('guestnumber', ''))
+        guestnumber = clean_user_input(request.args.get('guestnumber', ''))
         recipename = clean_user_input(request.form.get('name'))
         quantity = clean_user_input(request.form.get('quantity'))
         cursor = CONNECTION.cursor()
