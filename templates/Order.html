@@ -15,6 +15,16 @@
     <link rel="stylesheet" href="../static/css/main.css">
     <script src="../static/js/main.js" type="text/javascript" charset="utf-8"></script>
     <!-- local -->
+    <script language="JavaScript">
+        $("#add-recipe").click(function(){
+            $("#insert-recipe-modal .modal-title").html("Add a Dish");
+            $("#insert-recipe-modal button[type=submit]").html("Add dish");
+        });
+        $(".edit-order").click(function(){
+            $("#insert-recipe-modal .modal-title").html("Edit your Order");
+            $("#insert-recipe-modal button[type=submit]").html("Update Order");
+        });
+    </script>
 
     <style>
         .title-container {
