@@ -230,7 +230,7 @@ def customerList_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateUser '" + \
             str(username) + "' , '" + str(password) + \
-            "', '" + str(new) +"' , " + balance + " , '" + str(name) +"'"
+            "', '" + str(new) +"' , '" + balance + "', '" + str(name) +"'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
