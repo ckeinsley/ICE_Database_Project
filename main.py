@@ -112,12 +112,9 @@ def orderList_page():
 
     if method == 'DELETE':
         guestnumber = request.form.get('guest')
-        tablenumber = request.form.get('table')
-        username = request.form.get('username')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec delBill " + \
-            str(guestnumber) + " , '', '" + str(username) + \
-            "', " + str(tablenumber)
+        sqlquer = "exec delBill '" + \
+            str(guestnumber) + "'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
@@ -150,8 +147,6 @@ def order_page():
 
     if method == 'PUT':
         guestnumber = request.args.get('guestnumber', '')
-        username = request.args.get('user', '')
-        date = request.args.get('time', '')
         recipename = request.form.get('name')
         quantity = request.form.get('quantity')
         cursor = CONNECTION.cursor()
@@ -171,7 +166,7 @@ def order_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
-    
+
     guestnumber = request.args.get('guestnumber', '')
     username = request.args.get('user', '')
     date = request.args.get('time', '')
@@ -186,7 +181,7 @@ def order_page():
         "From [Check], Orders, Bill " \
         "Where [Check].GuestNumber = Orders.GuestNumber AND Orders.GuestNumber=Bill.Guest " \
         "AND [Check].GuestNumber = " + guestnumber
-    
+
     squery = remove_sql_comments(squery)
     squery2 = remove_sql_comments(squery2)
 
