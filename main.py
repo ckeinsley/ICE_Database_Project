@@ -21,7 +21,7 @@ def hello_world():
 
 @APP.route('/Menu',methods=['GET', 'POST'])
 def menu_page():
-    method=request.form.get('_method')
+    method = request.form.get('_method')
     if method == 'POST':
         recipename = request.form.get('name')
         price = request.form.get('price')
@@ -37,7 +37,7 @@ def menu_page():
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
-    
+
     if method == 'PUT':
         recipename = request.form.get('name')
         price = request.form.get('price')
@@ -83,9 +83,10 @@ def recipe_page():
 #-----ORDERS------#
 
 
-@APP.route('/OrderList',methods=['GET', 'POST'])
+@APP.route('/OrderList', methods=['GET', 'POST'])
 def orderList_page():
     method = request.form.get('_method')
+    return str(method)
     if method == 'POST':
         return "Hello world"
         guestnumber = request.form.get('guest')
@@ -137,7 +138,7 @@ def orderList_page():
 
 @APP.route('/Order', methods=['GET', 'POST'])
 def order_page():
-    method=request.form.get('_method')
+    method = request.form.get('_method')
     if method == 'POST':
         guestnumber = request.args.get('guestnumber', '')
         recipename = request.form.get('name')
