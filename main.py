@@ -201,7 +201,8 @@ def order_page():
 #-----CUSTOMERS----------#
 
 
-@APP.route('/CustomerList')
+@APP.route('/CustomerList',methods=['GET', 'POST'])
+
 def customerList_page():
     method = request.form.get('_method')
     if method == 'POST':
@@ -232,7 +233,7 @@ def customerList_page():
     if method == 'DELETE':
         username = request.form.get('delname')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec delBuy [" + username + "]"
+        sqlquer = "exec delUser [" + username + "]"
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
