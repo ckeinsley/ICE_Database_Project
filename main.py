@@ -13,6 +13,9 @@ def remove_sql_comments(toRemove):
     output = output.replace("/*", " ")
     return output.strip()
 
+def clean_user_input(toClean):
+    return toClean.replace("'", "''")
+
 @APP.route('/')
 @APP.route('/Welcome')
 def hello_world():
@@ -25,13 +28,13 @@ def hello_world():
 def menu_page():
     method = request.form.get('_method')
     if method == 'POST':
-        recipename = request.form.get('name')
-        price = request.form.get('price')
-        time = request.form.get('time')
-        info = request.form.get('calorie')
-        des = request.form.get('description')
-        rate = request.form.get('rate')
-        img = request.form.get('img')
+        recipename = clean_user_input(request.form.get('name'))
+        price = clean_user_input(request.form.get('price'))
+        time = clean_user_input(request.form.get('time'))
+        info = clean_user_input(request.form.get('calorie'))
+        des = clean_user_input(request.form.get('description'))
+        rate = clean_user_input(request.form.get('rate'))
+        img = clean_user_input(request.form.get('img'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
             "'"+str(recipename) + "' , '" + str(price) + \
