@@ -249,7 +249,8 @@ def ingredientList_page():
         nutriInfo = request.form.get('nutrinfo')
         unitsize = request.form.get('UnitSize')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddIngredient '" + str(nameOfIngredient) + "' , '" + str(nutriInfo) + "' , '" + str(unitsize) + "'"
+        sqlquer = "exec AddIngredient '" + str(nameOfIngredient) + "' , '" \
+            + str(nutriInfo) + "' , '" + str(unitsize) + "'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
@@ -273,7 +274,7 @@ def ingredient_page():
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
     squery2 = ("SELECT * FROM Stock WHERE IngredientName=" + "'" + iname + "'")
-    squery = remove_sql_comments(squery)
+    squery1 = remove_sql_comments(squery1)
     squery2 = remove_sql_comments(squery2)
     cursor.execute(squery1)
     result1 = cursor.fetchall()
