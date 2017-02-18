@@ -175,8 +175,6 @@ def order_page():
 
 
     guestnumber = request.args.get('guestnumber', '')
-    username = request.args.get('user', '')
-    date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
     squery = "Select Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
         "From [Check], Orders, Recipe " \
@@ -244,16 +242,21 @@ def customer_page():
 
 @APP.route('/IngredientList', methods=['POST', 'GET'])
 def ingredientList_page():
+    method = request.form.get('_method')
+
+
     if request.method == 'POST':
-        nameOfIngredient = request.form.get('name', '')
-        nutriInfo = request.form.get('nutrinfo')
+        nameofingredient = request.form.get('name', '')
+        nutriinfo = request.form.get('nutrinfo')
         unitsize = request.form.get('UnitSize')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddIngredient '" + str(nameOfIngredient) + "' , '" \
-            + str(nutriInfo) + "' , '" + str(unitsize) + "'"
+        sqlquer = "exec AddIngredient '" + str(nameofingredient) + "' , '" \
+            + str(nutriinfo) + "' , '" + str(unitsize) + "'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
+
+    
 
     cursor = CONNECTION.cursor()
     squery = "SELECT Ingredient.IngredientName, IngredientReadout.Stocked, Units " \
@@ -280,7 +283,7 @@ def ingredient_page():
     result1 = cursor.fetchall()
     cursor.execute(squery2)
     result2 = cursor.fetchall()
-    return render_template('Ingredient.html', info=result1[0],serial=result2)
+    return render_template('Ingredient.html', info=result1[0], serial=result2)
 
 if __name__ == "__main__":
     APP.run(host='0.0.0.0', port=8080, debug=True)
