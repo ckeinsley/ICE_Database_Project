@@ -221,13 +221,15 @@ def customerList_page():
         CONNECTION.commit()
 
     if method == 'PUT':
-        guestnumber = request.args.get('guestnumber', '')
-        recipename = request.form.get('name')
-        quantity = request.form.get('quantity')
+        name = request.form.get('fname')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        new = request.form.get('newpassword')
+        balance = request.form.get('balance')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec UpdateBuy [" + \
-            (guestnumber) + "] , [" + str(recipename) + \
-            "] , [" + str(quantity) + "] , '' "
+        sqlquer = "exec AddAccount [" + \
+            str(username) + "] , [" + str(password) + \
+            "], [" + str(new) +"] , " + balance + " , [" + str(name) +"]"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
