@@ -175,8 +175,6 @@ def order_page():
 
 
     guestnumber = request.args.get('guestnumber', '')
-    username = request.args.get('user', '')
-    date = request.args.get('time', '')
     cursor = CONNECTION.cursor()
     squery = "Select Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
         "From [Check], Orders, Recipe " \
@@ -277,32 +275,32 @@ def customer_page():
 
 @APP.route('/IngredientList', methods=['POST', 'GET'])
 def ingredientList_page():
+    method = request.form.get('_method')
+
+
     if request.method == 'POST':
-        nameOfIngredient = request.form.get('name', '')
-        nutriInfo = request.form.get('nutrinfo')
+        nameofingredient = request.form.get('name', '')
+        nutriinfo = request.form.get('nutrinfo')
         unitsize = request.form.get('UnitSize')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddIngredient [" + str(nameOfIngredient) + "] , [" + str(nutriInfo) + "] , [" + str(unitsize) + "]"
+        sqlquer = "exec AddIngredient '" + str(nameofingredient) + "' , '" \
+            + str(nutriinfo) + "' , '" + str(unitsize) + "'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
+    
+
     cursor = CONNECTION.cursor()
     squery = "SELECT Ingredient.IngredientName, IngredientReadout.Stocked, Units " \
-        "FROM Ingredient, IngredientReadout " \
-        "WHERE Ingredient.IngredientName=IngredientReadout.IngredientName;"
+        "FROM Ingredient LEFT JOIN IngredientReadout " \
+        "ON Ingredient.IngredientName=IngredientReadout.IngredientName;"
     squery = remove_sql_comments(squery)
-    # squery1 = "SELECT * FROM IngredientReadout"
     cursor.execute(squery)
     results = cursor.fetchall()
-    # cursor.execute(squery1)
-    # results1 = cursor.fetchall()
     rows = []
-    stockrow=[]
     for row in results:
         rows.append(row)
-    # for sr in results1:
-    #     stockrow.append(sr)
     return render_template('IngredientList.html', ingredientlist=rows)
 
 
@@ -312,13 +310,13 @@ def ingredient_page():
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")
     squery2 = ("SELECT * FROM Stock WHERE IngredientName=" + "'" + iname + "'")
-    squery = remove_sql_comments(squery)
+    squery1 = remove_sql_comments(squery1)
     squery2 = remove_sql_comments(squery2)
     cursor.execute(squery1)
     result1 = cursor.fetchall()
     cursor.execute(squery2)
     result2 = cursor.fetchall()
-    return render_template('Ingredient.html', info=result1[0],serial=result2)
+    return render_template('Ingredient.html', info=result1[0], serial=result2)
 
 if __name__ == "__main__":
     APP.run(host='0.0.0.0', port=8080, debug=True)
