@@ -261,7 +261,6 @@ def customerList_page():
 @APP.route('/Customer', methods=['POST','GET'])
 def customer_page():
     if(request.method=='POST'):
-        return 111
         username = request.args.get('user')
         fav = clean_user_input(request.form.get('favorite'))
         cursor = CONNECTION.cursor()
