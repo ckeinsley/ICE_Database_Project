@@ -260,6 +260,15 @@ def customerList_page():
 
 @APP.route('/Customer')
 def customer_page():
+    if(request.form.get('method')==POST):
+        username = request.args.get('user')
+        fav = clean_user_input(request.form.get('favorite'))
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec AddFavorite '" + str(username) + "' , '" + str(fav) + "'"
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
     username = request.args.get('user')
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Account WHERE Username=" + "'" + username + "'")
