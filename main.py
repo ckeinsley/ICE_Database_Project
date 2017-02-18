@@ -205,6 +205,39 @@ def order_page():
 
 @APP.route('/CustomerList')
 def customerList_page():
+    method = request.form.get('_method')
+    if method == 'POST':
+        name = request.form.get('fname')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        balance = request.form.get('balance')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec AddOAccount [" + \
+            str(username) + "] , [" + str(password) + \
+            "], " + balance + " , [" + str(name) +"]"
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
+    if method == 'PUT':
+        guestnumber = request.args.get('guestnumber', '')
+        recipename = request.form.get('name')
+        quantity = request.form.get('quantity')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec UpdateBuy [" + \
+            (guestnumber) + "] , [" + str(recipename) + \
+            "] , [" + str(quantity) + "] , '' "
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
+    if method == 'DELETE':
+        username = request.form.get('delname')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec delBuy [" + username + "]"
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
     cursor = CONNECTION.cursor()
     squery = ("SELECT Username, Balance, FullName FROM Account")
     squery = remove_sql_comments(squery)
