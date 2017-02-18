@@ -340,8 +340,42 @@ def ingredientList_page():
     return render_template('IngredientList.html', ingredientlist=rows)
 
 
-@APP.route('/Ingredient')
+@APP.route('/Ingredient',methods=["GET","POST"])
 def ingredient_page():
+    method = request.form.get('_method')
+
+    if method == 'POST':
+        nameofingredient = request.args.get('name')
+        shipno = clean_user_input(request.form.get('shipno'))
+        exp = clean_user_input(request.form.get('exp'))
+        quantity = clean_user_input(request.form.get('quantity'))
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec AddStock '" + str(shipno) + "' , '" \
+            + str(quantity) + "' , '" + str(exp) + "', '" + str(nameofingredient) +"'"
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
+    if method == 'PUT':
+        nameofingredient = request.args.get('name')
+        shipno = clean_user_input(request.form.get('shipno'))
+        exp = clean_user_input(request.form.get('exp'))
+        quantity = clean_user_input(request.form.get('quantity'))
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec UpdateStuff '" + str(shipno) + "' , '" \
+            + str(quantity) + "' , '" + str(exp) + "', '" + str(nameofingredient) +"'"
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
+    if method == 'DELETE':
+        shipno = clean_user_input(request.form.get('delnum', ''))
+        sqlquer = "exec delStuff '" + str(shipno) + "'"
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor = CONNECTION.cursor()
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
     iname = request.args.get('name')
     cursor = CONNECTION.cursor()
     squery1 = ("SELECT * FROM Ingredient WHERE IngredientName=" + "'" + iname + "'")

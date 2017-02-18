@@ -102,6 +102,14 @@
                 <a id="toggle-edit" href="#">Edit</a>
             </ul>
         </div>
+        <ul>
+            <button data-toggle="modal" data-target="#insert-ship-modal" type="button" class="edit-ship btn btn-success hidden edit-actions">
+            <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+            <button data-toggle="modal" data-target="#delete-ship-modal" type="button" class="delete btn btn-danger hidden edit-actions">
+		    <span class="glyphicon glyphicon-remove"></span>
+			</button>
+        </ul>
         <div class="name-container">
             <h1 class="name">{{info[0]}}</h1>
         </div>
@@ -121,14 +129,7 @@
             {% for ship in serial %}
             <div class="every-ship-list-container">
                 <div class="panel-header">
-                    <h1 class="shipno" id="display-name">Ship No.{{ship[0]}}
-                        <button data-toggle="modal" data-target="#insert-ship-modal" type="button" class="edit-ship btn btn-success hidden edit-actions">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                        <button data-toggle="modal" data-target="#delete-ship-modal" type="button" class="delete-ship btn btn-danger hidden edit-actions">
-						    <span class="glyphicon glyphicon-remove"></span>
-				            </button>
-                    </h1>
+                    <h1 class="shipno" id="display-name">Ship No.{{ship[0]}}</h1>
                 </div>
                 <div class="panel-body">
                         <div class="exp">Expiration: {{ship[2]}}</div>
@@ -154,6 +155,7 @@
                     <h4 class="modal-title" id="myModalLabel">Add Ingredient</h4>
                 </div>
                 <form id="change" method="POST" class="form-horizontal" role="form">
+                    <input id="change" type="hidden" name="_method" value="POST">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="shipno-input" class="col-sm-2 control-label">Ship No:</label>
@@ -195,15 +197,22 @@
 					</button>
                     <h4 class="modal-title">Delete Shipment</h4>
                 </div>
-                <form2  method="POST" class="form" role="form">
+                <form  method="POST" class="form" role="form">
+                    <input id="del" type="hidden" name="_method" value="POST">
                     <div class="modal-body">
-                        <div>Are you wish to delete this shipment?</div>
-                    </div>
+						<div>Please enter the shipment you want to delete.</div>
+                        <ul></ul>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="num-input" name="delnum" placeholder="Shipment Number">
+                            </div>
+                        </div>
+					</div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="revert-del btn btn-default" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-danger">Delete Shipment</button>
                     </div>
-                </form2>
+                </form>
             </div>
         </div>
     </div>
