@@ -4,6 +4,7 @@ rh.mq = rh.mq || {}
 
 /** Tracks the editing state */
 rh.mq.editing = false
+rh.mq.deleting=false
 
 /** Set up the click listners for the page */
 rh.mq.enableButtons = function() {
@@ -31,32 +32,21 @@ rh.mq.enableButtons = function() {
 	$(".edit-order").click(function(){
 		$("#insert-order-modal .modal-title").html("Edit an order");
 		$("#insert-order-modal button[type=submit]").html("Update Order");
-		// var name=$(this).find(".name").html();
-		// var price=$(this).find(".price").html();
-		// var calorie=$(this).find(".calorie").html();
-		// var img=$(this).find(".img").html();
-		// var description=$(this).find(".description").html();
-		// $("#insert-recipe-modal input[name=name]").val(name);
-		// $("#insert-recipe-modal input[name=price]").val(price);
-		// $("#insert-recipe-modal input[name=calorie]").val(calorie);
-		// $("#insert-recipe-modal input[name=calorie]").val(calorie);
-		// $("#insert-recipe-modal input[name=description]").val(description);
 	});
-	// $(".delete-movie-quote").click(function(){
-	// 	var entityKey=$(this).find(".entity_key").html();
-	// 	console.log("entity_key ="+entityKey);
-	// 	$("#delete-quote-modal input[name=entity_key]").val(entityKey).prop("disabled",false);
-	// });
+	$('.delete').click(function(){
+		rh.mq.deleting=true;
+		$("#del").attr("value","DELETE");
+		$("#change").attr("value","NOT");
+		console.log("entity_key =");
+	});
+
+	$('.revert-del').click(function(){
+		rh.mq.deleting=false;
+		$("#del").attr("value","POST");
+		$("#change").attr("value","PUT");
+	});
 };
 
-
-
-/**Events*/
-// rh.mq.attachEventHandlers=function(){
-// 	$('#insert-quote-modal').on('show.bs.modal',function(){
-// 		$("input[name='quote']").focus();
-// 	});
-// };
 
 /**Main*/
 $(document).ready(function(){
