@@ -213,9 +213,9 @@ def customerList_page():
         password = request.form.get('password')
         balance = request.form.get('balance')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddAccount [" + \
-            str(username) + "] , [" + str(password) + \
-            "], " + balance + " , [" + str(name) +"]"
+        sqlquer = "exec AddAccount '" + \
+            str(username) + "' , '" + str(password) + \
+            "', " + balance + " , '" + str(name) +"'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
@@ -227,9 +227,9 @@ def customerList_page():
         new = request.form.get('newpassword')
         balance = request.form.get('balance')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec UpdateUser [" + \
-            str(username) + "] , [" + str(password) + \
-            "], [" + str(new) +"] , " + balance + " , [" + str(name) +"]"
+        sqlquer = "exec UpdateUser '" + \
+            str(username) + "' , '" + str(password) + \
+            "', '" + str(new) +"' , " + balance + " , '" + str(name) +"'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
