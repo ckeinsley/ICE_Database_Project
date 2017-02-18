@@ -86,7 +86,6 @@ def recipe_page():
 @APP.route('/OrderList',methods=['GET', 'POST'])
 def orderList_page():
     method = request.form.get('_method')
-    return "Hello World"
     if method == 'POST':
         return "Hello world"
         guestnumber = request.form.get('guest')
