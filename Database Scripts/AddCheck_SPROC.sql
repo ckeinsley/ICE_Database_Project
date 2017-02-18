@@ -1,12 +1,13 @@
 USE [ICE_Project]
 GO
 
-/****** Object:  StoredProcedure [dbo].[AddCheck]    Script Date: 2/16/2017 7:45:19 PM ******/
+/****** Object:  StoredProcedure [dbo].[AddCheck]    Script Date: 2/18/2017 11:06:36 AM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Curtis Humm>
@@ -16,7 +17,7 @@ GO
 CREATE  PROCEDURE [dbo].[AddCheck] 
 
 (@GuestNum int,
- @dt date = getDate,
+ @dt date = getdate,
  @User varchar(35),
  @Table varchar(35) = 0)
 
@@ -51,14 +52,16 @@ end
 
 
 --Make the insertion
+declare @date date
+set @date = getDate()
 
 INSERT INTO [Check]
 ( [GuestNumber], [Date/Time], [Username], [TableNumber])
-VALUES ( @GuestNum, @dt, @User, @Table)
+VALUES ( @GuestNum, @date, @User, @Table)
 
 
 END
 
-GO
 
+GO
 
