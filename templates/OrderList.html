@@ -170,8 +170,14 @@
                 <form method="POST" class="form" role="form">
                     <input id="del" type="hidden" name="_method" value="POST">
                     <div class="modal-body">
-                        <div>Are you wish to delete this order?</div>
-                    </div>
+						<div>Please enter the GuestnNumber for the order you want to delete.</div>
+                        <ul></ul>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="guest-input" name="guest" placeholder="Guest Number">
+                            </div>
+                        </div>
+					</div>
                     <div class="modal-footer">
                         <button type="button" class="revert-del btn btn-default" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-danger">Delete Order</button>
