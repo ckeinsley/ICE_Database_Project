@@ -123,7 +123,7 @@ def orderList_page():
         CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
-    squery = ("SELECT * FROM [Check], Bill WHERE [Check].GuestNumber=Bill.Guest")
+    squery = ("SELECT * FROM [Check] LEFT OUTER JOIN Bill ON [Check].GuestNumber=Bill.Guest")
     squery = remove_sql_comments(squery)
     cursor.execute(squery)
     results = cursor.fetchall()
