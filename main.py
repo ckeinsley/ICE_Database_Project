@@ -249,27 +249,21 @@ def ingredientList_page():
         nutriInfo = request.form.get('nutrinfo')
         unitsize = request.form.get('UnitSize')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddIngredient [" + str(nameOfIngredient) + "] , [" + str(nutriInfo) + "] , [" + str(unitsize) + "]"
+        sqlquer = "exec AddIngredient '" + str(nameOfIngredient) + "' , '" + str(nutriInfo) + "' , '" + str(unitsize) + "'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
     squery = "SELECT Ingredient.IngredientName, IngredientReadout.Stocked, Units " \
-        "FROM Ingredient, IngredientReadout " \
-        "WHERE Ingredient.IngredientName=IngredientReadout.IngredientName;"
+        "FROM Ingredient LEFT JOIN IngredientReadout " \
+        "ON Ingredient.IngredientName=IngredientReadout.IngredientName;"
     squery = remove_sql_comments(squery)
-    # squery1 = "SELECT * FROM IngredientReadout"
     cursor.execute(squery)
     results = cursor.fetchall()
-    # cursor.execute(squery1)
-    # results1 = cursor.fetchall()
     rows = []
-    stockrow=[]
     for row in results:
         rows.append(row)
-    # for sr in results1:
-    #     stockrow.append(sr)
     return render_template('IngredientList.html', ingredientlist=rows)
 
 
