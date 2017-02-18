@@ -44,13 +44,13 @@ def menu_page():
         CONNECTION.commit()
 
     if method == 'PUT':
-        recipename = request.form.get('name')
-        price = request.form.get('price')
-        time = request.form.get('time')
-        info = request.form.get('calorie')
-        des = request.form.get('description')
-        rate = request.form.get('rate')
-        img = request.form.get('img')
+        recipename = clean_user_input(request.form.get('name'))
+        price = clean_user_input(request.form.get('price'))
+        time = clean_user_input(request.form.get('time'))
+        info = clean_user_input(request.form.get('calorie'))
+        des = clean_user_input(request.form.get('description'))
+        rate = clean_user_input(request.form.get('rate'))
+        img = clean_user_input(request.form.get('img'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateDish " + \
             "'"+str(recipename) + "' , '" + price + \
@@ -60,7 +60,7 @@ def menu_page():
         CONNECTION.commit()
 
     if method == 'DELETE':
-        recipename = request.form.get('delname')
+        recipename = clean_user_input(request.form.get('delname'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec delDish '" + recipename + "'"
         cursor.execute(sqlquer)
@@ -99,9 +99,9 @@ def recipe_page():
 def orderList_page():
     method = request.form.get('_method')
     if method == 'POST':
-        guestnumber = request.form.get('guest')
-        tablenumber = request.form.get('table')
-        username = request.form.get('username')
+        guestnumber = clean_user_input(request.form.get('guest'))
+        tablenumber = clean_user_input(request.form.get('table'))
+        username = clean_user_input(request.form.get('username'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddCheck " + \
             str(guestnumber) + " , '', '" + str(username) + \
@@ -111,9 +111,9 @@ def orderList_page():
         CONNECTION.commit()
 
     if method == 'PUT':
-        guestnumber = request.form.get('guest')
-        tablenumber = request.form.get('table')
-        username = request.form.get('username')
+        guestnumber = clean_user_input(request.form.get('guest'))
+        tablenumber = clean_user_input(request.form.get('table'))
+        username = clean_user_input(request.form.get('username'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateBill " + \
             str(guestnumber) + " , '', '" + str(username) + \
@@ -123,7 +123,7 @@ def orderList_page():
         CONNECTION.commit()
 
     if method == 'DELETE':
-        guestnumber = request.form.get('guest')
+        guestnumber = clean_user_input(request.form.get('guest'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec delBill '" + \
             str(guestnumber) + "'"
@@ -146,9 +146,9 @@ def orderList_page():
 def order_page():
     method = request.form.get('_method')
     if method == 'POST':
-        guestnumber = request.args.get('guestnumber', '')
-        recipename = request.form.get('name')
-        quantity = request.form.get('quantity')
+        guestnumber = request.args.get('guestnumber', ''))
+        recipename = clean_user_input(request.form.get('name'))
+        quantity = clean_user_input(request.form.get('quantity'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddOrder " + \
             (guestnumber) + " , [" + str(recipename) + \
@@ -158,9 +158,9 @@ def order_page():
         CONNECTION.commit()
 
     if method == 'PUT':
-        guestnumber = request.args.get('guestnumber', '')
-        recipename = request.form.get('name')
-        quantity = request.form.get('quantity')
+        guestnumber = clean_user_input(request.args.get('guestnumber', ''))
+        recipename = clean_user_input(request.form.get('name'))
+        quantity = clean_user_input(request.form.get('quantity'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateBuy [" + \
             (guestnumber) + "] , [" + str(recipename) + \
@@ -170,8 +170,8 @@ def order_page():
         CONNECTION.commit()
 
     if method == 'DELETE':
-        guestnumber = request.args.get('guestnumber', '')
-        recipename = request.form.get('delname')
+        guestnumber = clean_user_input(request.args.get('guestnumber', ''))
+        recipename = clean_user_input(request.form.get('delname'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec delBuy [" + \
             (guestnumber) + "] , [" + recipename + "]"
@@ -179,7 +179,7 @@ def order_page():
         CONNECTION.commit()
 
 
-    guestnumber = request.args.get('guestnumber', '')
+    guestnumber = clean_user_input(request.args.get('guestnumber', ''))
     cursor = CONNECTION.cursor()
     squery = "Select Orders.RecipeName, Quantity, (Price*Quantity) as Price " \
         "From [Check], Orders, Recipe " \
@@ -211,10 +211,10 @@ def order_page():
 def customerList_page():
     method = request.form.get('_method')
     if method == 'POST':
-        name = request.form.get('fname')
-        username = request.form.get('username')
-        password = request.form.get('password')
-        balance = request.form.get('balance')
+        name = clean_user_input(request.form.get('fname'))
+        username = clean_user_input(request.form.get('username'))
+        password = clean_user_input(request.form.get('password'))
+        balance = clean_user_input(request.form.get('balance'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddAccount '" + \
             str(username) + "' , '" + str(password) + \
@@ -224,11 +224,11 @@ def customerList_page():
         CONNECTION.commit()
 
     if method == 'PUT':
-        name = request.form.get('fname')
-        username = request.form.get('username')
-        password = request.form.get('password')
-        new = request.form.get('newpassword')
-        balance = request.form.get('balance')
+        name = clean_user_input(request.form.get('fname'))
+        username = clean_user_input(request.form.get('username'))
+        password = clean_user_input(request.form.get('password'))
+        new = clean_user_input(request.form.get('newpassword'))
+        balance = clean_user_input(request.form.get('balance'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdateUser '" + \
             str(username) + "' , '" + str(password) + \
@@ -238,7 +238,7 @@ def customerList_page():
         CONNECTION.commit()
 
     if method == 'DELETE':
-        username = request.form.get('delname')
+        username = clean_user_input(request.form.get('delname'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec delUser [" + username + "]"
         cursor.execute(sqlquer)
@@ -286,9 +286,9 @@ def ingredientList_page():
     method = request.form.get('_method')
 
     if method == 'POST':
-        nameofingredient = request.form.get('name', '')
-        nutriinfo = request.form.get('nutrinfo')
-        unitsize = request.form.get('UnitSize')
+        nameofingredient = clean_user_input(request.form.get('name', ''))
+        nutriinfo = clean_user_input(request.form.get('nutrinfo'))
+        unitsize = clean_user_input(request.form.get('UnitSize'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddIngredient '" + str(nameofingredient) + "' , '" \
             + str(nutriinfo) + "' , '" + str(unitsize) + "'"
@@ -297,9 +297,9 @@ def ingredientList_page():
         CONNECTION.commit()
 
     if method == 'PUT':
-        nameofingredient = request.form.get('name', '')
-        nutriinfo = request.form.get('nutrinfo')
-        unitsize = request.form.get('UnitSize')
+        nameofingredient = clean_user_input(request.form.get('name', ''))
+        nutriinfo = clean_user_input(request.form.get('nutrinfo'))
+        unitsize = clean_user_input(request.form.get('UnitSize'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec UpdatePart '" + str(nameofingredient) + "' , '" \
             + str(nutriinfo) + "' , '" + str(unitsize) + "'"
@@ -308,7 +308,7 @@ def ingredientList_page():
         CONNECTION.commit()
 
     if method == 'DELETE':
-        nameofingredient = request.form.get('name', '')
+        nameofingredient = clean_user_input(request.form.get('name', ''))
         sqlquer = "exec delPart '" + str(nameofingredient) + "'"
         sqlquer = remove_sql_comments(sqlquer)
         cursor = CONNECTION.cursor()
