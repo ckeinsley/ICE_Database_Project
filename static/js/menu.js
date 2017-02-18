@@ -4,6 +4,7 @@ rh.mq = rh.mq || {}
 
 /** Tracks the editing state */
 rh.mq.editing = false
+rh.mq.deleting=false
 
 /** Set up the click listners for the page */
 rh.mq.enableButtons = function() {
@@ -23,6 +24,19 @@ rh.mq.enableButtons = function() {
 			$(this).html("Done");
 		}
 	});
+
+	$('.delete').click(function(){
+		rh.mq.deleting=true;
+		$("#del").attr("value","DELETE");
+		$("#change").attr("value","NOT");
+	});
+
+	$('.revert-del').click(function(){
+		rh.mq.deleting=false;
+		$("#del").attr("value","POST");
+		$("#change").attr("value","PUT");
+	});
+
 	$("#add-recipe").click(function(){
 		$("#insert-recipe-modal .modal-title").html("Add a New Dish");
 		$("#insert-recipe-modal button[type=submit]").html("Add Recipe");

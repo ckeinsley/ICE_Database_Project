@@ -24,7 +24,7 @@ rh.mq.enableButtons = function() {
 		}
 	});
 
-	$('.delete-order').click(function(){
+	$('.delete').click(function(){
 		rh.mq.deleting=true;
 		$("#del").attr("value","DELETE");
 		$("#change").attr("value","NOT");

@@ -81,20 +81,21 @@
                         <a id="toggle-edit" href="#">Edit</a>
                 </ul>
             </div>
+            <ul>
+                <button data-toggle="modal" data-target="#insert-recipe-modal"
+						type="button" class="edit-recipe btn btn-success hidden edit-actions">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button data-toggle="modal" data-target="#delete-recipe-modal"
+				        type="button" class="delete btn btn-danger hidden edit-actions">
+						<span class="glyphicon glyphicon-remove"></span>
+				</button>
+            </ul>
         <div class="menu-container">
             {% for recipe in menu %}
                 <div class="every-recipe-container">
                     <div class="panel-header">
-                        <h1 class="name" id="display-name">{{recipe[0]}}
-                            <button data-toggle="modal" data-target="#insert-recipe-modal"
-						type="button" class="edit-recipe btn btn-success hidden edit-actions">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
-                    <button data-toggle="modal" data-target="#delete-recipe-modal"
-				        type="button" class="delete-recipe btn btn-danger hidden edit-actions">
-						<span class="glyphicon glyphicon-remove"></span>
-				    </button>
-                        </h1>
+                        <h1 class="name" id="display-name">{{recipe[0]}}</h1>
                     </div>
                     <div class="panel-body">
                         <a href="Recipe?name={{recipe[0]}}">
@@ -183,7 +184,7 @@
                             <button type="submit" class="btn btn-primary" href="OrderList.html" >Add Recipe</button>
                         </div>
                     </div>
-                </form1>
+                </form>
             </div>
         </div>
     </div>
@@ -199,15 +200,22 @@
 					</button>
 					<h4 class="modal-title">Delete Recipe</h4>
 				</div>
-				<form2 action="/deleterecipe" method="POST" class="form" role="form">
+				<form action="/deleterecipe" method="POST" class="form" role="form">
+                    <input id="del" type="hidden" name="_method" value="POST">
 					<div class="modal-body">
-						<div>Are you wish to delete this dish?</div>
+						<div>Please enter the recipe you want to delete.</div>
+                        <ul></ul>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="name-input" name="delname" placeholder="Recipe Name">
+                            </div>
+                        </div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="revert-del btn btn-default" data-dismiss="modal">Cancel</button>
 						<button type="submit" class="btn btn-danger">Delete Recipe</button>
 					</div>
-				</form2>
+                </form>
 			</div>
 		</div>
 	</div>

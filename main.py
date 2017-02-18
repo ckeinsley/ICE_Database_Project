@@ -54,6 +54,13 @@ def menu_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
+    if method == 'DELETE':
+        recipename = request.form.get('delname')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec delDish [" + recipename + "]"
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
     cursor = CONNECTION.cursor()
     squery = ("SELECT RecipeName, Price, Rating FROM Recipe")
     squery = remove_sql_comments(squery)
