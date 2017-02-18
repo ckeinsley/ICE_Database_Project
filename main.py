@@ -29,7 +29,6 @@ def menu_page():
     method = request.form.get('_method')
     if method == 'POST':
         recipename = clean_user_input(request.form.get('name'))
-        return recipename
         price = clean_user_input(request.form.get('price'))
         time = clean_user_input(request.form.get('time'))
         info = clean_user_input(request.form.get('calorie'))
