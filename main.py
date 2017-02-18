@@ -277,8 +277,7 @@ def customer_page():
 def ingredientList_page():
     method = request.form.get('_method')
 
-
-    if request.method == 'POST':
+    if method == 'POST':
         nameofingredient = request.form.get('name', '')
         nutriinfo = request.form.get('nutrinfo')
         unitsize = request.form.get('UnitSize')
@@ -289,7 +288,24 @@ def ingredientList_page():
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
-    
+    if method == 'PUT':
+        nameofingredient = request.form.get('name', '')
+        nutriinfo = request.form.get('nutrinfo')
+        unitsize = request.form.get('UnitSize')
+        cursor = CONNECTION.cursor()
+        sqlquer = "exec UpdatePart '" + str(nameofingredient) + "' , '" \
+            + str(nutriinfo) + "' , '" + str(unitsize) + "'"
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
+
+    if method == 'DELETE':
+        nameofingredient = request.form.get('name', '')
+        sqlquer = "exec delPart '" + str(nameofingredient) + "'"
+        sqlquer = remove_sql_comments(sqlquer)
+        cursor = CONNECTION.cursor()
+        cursor.execute(sqlquer)
+        CONNECTION.commit()
 
     cursor = CONNECTION.cursor()
     squery = "SELECT Ingredient.IngredientName, IngredientReadout.Stocked, Units " \
