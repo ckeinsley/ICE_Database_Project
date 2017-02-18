@@ -14,7 +14,10 @@ def remove_sql_comments(toRemove):
     return output.strip()
 
 def clean_user_input(toClean):
-    return toClean.replace("'", "''")
+    if toClean is not None:
+        return toClean.replace("'", "''")
+    else:
+        return toClean
 
 @APP.route('/')
 @APP.route('/Welcome')
