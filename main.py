@@ -168,7 +168,6 @@ def order_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec delBuy [" + \
             (guestnumber) + "] , [" + recipename + "]"
-        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
