@@ -11,7 +11,7 @@ CONNECTION = pypyodbc.connect('Driver={SQL Server}; Server=titan.csse.rose-hulma
 def remove_sql_comments(toRemove):
     output = toRemove.replace("--", " ")
     output = output.replace("/*", " ")
-    output = output.replace('\'', '\'\'')
+    output = output.replace('\'', "''")
     return output.strip()
 
 @APP.route('/')
