@@ -266,6 +266,7 @@ def customer_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddFavorite '" + str(username) + "' , '" + str(fav) + "'"
         sqlquer = remove_sql_comments(sqlquer)
+        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
