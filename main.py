@@ -227,7 +227,7 @@ def customerList_page():
         new = request.form.get('newpassword')
         balance = request.form.get('balance')
         cursor = CONNECTION.cursor()
-        sqlquer = "exec AddAccount [" + \
+        sqlquer = "exec UpdateUser [" + \
             str(username) + "] , [" + str(password) + \
             "], [" + str(new) +"] , " + balance + " , [" + str(name) +"]"
         sqlquer = remove_sql_comments(sqlquer)
