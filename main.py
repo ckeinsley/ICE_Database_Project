@@ -38,7 +38,7 @@ def menu_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec AddRecipe " + \
             "'"+str(recipename) + "' , '" + str(price) + \
-            "' , '" + str(time) + "' , '" + str(info) + "', '" + str(des) +"', '" + str(ate) + "', '" + str(img) + "' "
+            "' , '" + str(time) + "' , '" + str(info) + "', '" + str(des) +"', '" + str(rate) + "', '" + str(img) + "' "
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
