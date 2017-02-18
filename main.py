@@ -231,6 +231,7 @@ def customerList_page():
         sqlquer = "exec UpdateUser '" + \
             str(username) + "' , '" + str(password) + \
             "', '" + str(new) +"' , '" + balance + "', '" + str(name) +"'"
+        return sqlquer
         sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
