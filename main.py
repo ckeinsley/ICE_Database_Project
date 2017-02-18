@@ -258,7 +258,7 @@ def customerList_page():
     return render_template("CustomerList.html", customer=rows)
 
 
-@APP.route('/Customer')
+@APP.route('/Customer', methods=['POST','GET'])
 def customer_page():
     if(request.form.get('method')=='POST'):
         username = request.args.get('user')
