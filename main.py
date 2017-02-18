@@ -85,7 +85,7 @@ def recipe_page():
 
 @APP.route('/OrderList',methods=['GET', 'POST'])
 def orderList_page():
-    method=request.form.get('_method')
+    method = request.form.get('_method')
     if method == 'POST':
         guestnumber = request.form.get('guest')
         tablenumber = request.form.get('table')
@@ -95,6 +95,7 @@ def orderList_page():
             str(guestnumber) + " , '', '" + str(username) + \
             "', " + str(tablenumber)
         sqlquer = remove_sql_comments(sqlquer)
+        return sqlquer
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
