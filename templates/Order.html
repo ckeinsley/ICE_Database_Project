@@ -59,6 +59,10 @@
             text-align: right;
             padding-top: 0;
         }
+
+        .btn {
+            margin-right: 0;
+        }
     </style>
 </head>
 
@@ -75,6 +79,19 @@
                         <a id="toggle-edit" href="#">Edit</a>
                 </ul>
             </div>
+                <ul>
+                    <div class="hidden edit-actions">
+                        <button data-toggle="modal" data-target="#insert-recipe-modal"
+                        type="button" class="edit-order btn btn-success"> 
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button data-toggle="modal" data-target="#delete-order-modal"
+                        type="button" class="delete-order btn btn-danger">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </div>
+                </ul>
+            
         </div>
         <div class="info-container">
             <h1 class="table-info">Table No.{{checkInfo[2]}}</h1>
@@ -85,13 +102,13 @@
         <div class="main-container" style="padding-top: 2em">
             <h1 class="menu">Menu</h1>
             <h1></h1>
+            
             <table class="table table-hover">
                 <thead class="table-title">
                     <tr>
                         <th>Recipe</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th class="hidden edit-actions">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,16 +119,6 @@
                         </td>
                         <td>{{recipe[2]}}</td>
                         <td>{{recipe[1]}}</td>
-                        <td class="hidden edit-actions">
-                            <button data-toggle="modal" data-target="#insert-recipe-modal"
-						type="button" class="edit-order btn btn-success">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
-                            <button data-toggle="modal" data-target="#delete-order-modal"
-				        type="button" class="delete-order btn btn-danger">
-						    <span class="glyphicon glyphicon-remove"></span>
-				            </button>
-                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -173,7 +180,13 @@
 				<form method="POST" class="form" role="form">
                     <input id="del" type="hidden" name="_method" value="POST">
 					<div class="modal-body">
-						<div>Are you wish to delete this order?</div>
+						<div>Please enter the dish you want to delete.</div>
+                        <ul></ul>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="name-input" name="delname" placeholder="Recipe Name">
+                            </div>
+                        </div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="revert-del btn btn-default" data-dismiss="modal">Cancel</button>
