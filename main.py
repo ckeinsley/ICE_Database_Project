@@ -66,6 +66,7 @@ def menu_page():
         recipename = clean_user_input(request.form.get('delname'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec delDish '" + recipename + "'"
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -178,6 +179,7 @@ def order_page():
         cursor = CONNECTION.cursor()
         sqlquer = "exec delBuy [" + \
             (guestnumber) + "] , [" + recipename + "]"
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
@@ -244,6 +246,7 @@ def customerList_page():
         username = clean_user_input(request.form.get('delname'))
         cursor = CONNECTION.cursor()
         sqlquer = "exec delUser [" + username + "]"
+        sqlquer = remove_sql_comments(sqlquer)
         cursor.execute(sqlquer)
         CONNECTION.commit()
 
